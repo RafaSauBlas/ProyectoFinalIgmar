@@ -1,0 +1,198 @@
+@import "variables";
+
+body {
+    background-color: #eae1d8;
+    .marginsforms {
+        margin: 10px;
+        .inputFile { 
+            background-color: $backgrouond_White;
+            cursor: pointer;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+        }
+        input[type="file"]::file-selector-button {
+            padding: 0.2em 0.4em;
+            border-radius: 0.2em;
+            background-color: $backgrouond_White;
+            border: none;
+            transition: 1s;
+            cursor: pointer;
+        }
+    }
+   
+    .contentclient1 {
+        .h3uno {
+            background-color: $bgTextClient;
+            width: 40%;
+            margin: 15px 0px 15px 0px;
+            padding: 8px 0px 8px 125px;
+            font-size: 15px;
+        }
+        select{
+            width: 260px;
+            border-radius: 30px;
+            border: none;
+            padding: 4px;
+            box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            cursor: pointer;
+        }
+        .formclient {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-right: 280px;
+            width: 100%;
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            input {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+        .formclient2 {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            width: 100%;
+           
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            input {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+        .endrow {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            input {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+    }
+    .contentclient2 {
+        .h3dos {
+            background-color: $bgTextClient;
+            width: 50%;
+            margin: 15px 0px 15px 0px;
+            padding: 8px 0px 8px 125px;
+            font-size: 15px;
+        }
+        .formclient {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-right: 280px;
+            width: 100%;
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            input {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+            #iidetected{
+                color: transparent;
+            }
+
+            select {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+        .endrow {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+
+            label {
+                display: block;
+                margin-bottom: 10px;
+            }
+            input {
+                width: 260px;
+                border-radius: 30px;
+                border: none;
+                padding: 4px;
+                box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+            }
+        }
+    }
+
+    .contentclient3 {
+        .table {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+            table {
+                background-color: $color_Text_White;
+                padding: 10px;
+                border-radius: 10px;
+                box-shadow: $shadow_box4;
+                border-collapse: collapse;
+               
+                    th {
+                        padding: 15px 38px 15px 38px; 
+                        border-bottom: 1px solid #000000;
+                    }
+                
+               
+                    td {
+                        text-align: center;
+                        padding: 15px;
+                        border-bottom: 1px solid #ddd;
+                    }
+                   
+                
+            }
+        }
+    }
+    
+    .contentclient4 {
+        display: flex;
+        justify-content: center;
+        margin: 30px 0px 50px 0px;
+        .btnsaveclient {
+            background-color: $backgrouond_Empresa;
+            border-radius: 10px;
+            padding: 15px 50px 15px 50px;
+            border: none;
+            color: $color_Text_White;
+        }
+        .btnsaveclient:hover{
+            background-color: #9BBAA9;
+            border-radius: 10px;
+            padding: 15px 50px 15px 50px;
+            border: none;
+            color: $color_Text_White;
+            cursor: pointer;
+        }
+    }
+}
+

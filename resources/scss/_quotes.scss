@@ -1,0 +1,161 @@
+@import "variables";
+
+body {
+    background-color: #eae1d8;
+    .quotesSubmenu {
+        width: 100%;
+        background-color: $backgrouond_Empresa;
+        margin-top: 14px;
+        display: flex;
+        justify-content: center;
+        #activate{
+            $white: $backgrouond_Empresa;
+            text-decoration: none;
+            color: $white;
+            padding: 10px 30px 10px 30px;
+            background-color: $bgTextClient;
+            font-weight: bold;
+        }
+        a {
+            $white: #ffff;
+            text-decoration: none;
+            color: $white; 
+            padding: 10px 30px 10px 30px;
+        }
+        a:hover {
+            $white: $backgrouond_Empresa;
+            text-decoration: none;
+            color: $white;
+            padding: 10px 30px 10px 30px;
+            background-color: $bgTextClient;
+            font-weight: bold;
+        }
+    }
+    .quotesOptions {
+        margin: 10px;
+        padding-left: 50px;
+
+        input {
+            border-radius: 20px;
+            padding: 5px 20px 5px 20px;
+            cursor: pointer;
+            border: none;
+            box-shadow: $shadow_box4;
+        }
+        input:hover {
+            border-radius: 20px;
+            padding: 5px 20px 5px 20px;
+            background-color: $bgTextClient;
+            color: $color_Text_White;
+            cursor: pointer;
+            border: none;
+            box-shadow: $shadow_box4;
+        }
+        .dropbtn {
+            $white: #ffff;
+            background-color: $white;
+            color: rgb(0, 0, 0);
+            padding: 5px 20px 5px 20px;
+            margin: 10px;
+            font-size: 14px;
+            border-radius: 20px;
+            cursor: pointer;
+            border: none;
+            box-shadow: $shadow_box4;
+        }
+        .dropbtn:hover,
+        .dropbtn:focus {
+            background-color: $bgTextClient;
+            color: white;
+            border: none;
+            box-shadow: $shadow_box4;
+        }
+        #myInput {
+            box-sizing: border-box;
+            background-image: url("searchicon.png");
+            background-position: 14px 12px;
+            background-repeat: no-repeat;
+            font-size: 16px;
+            padding: 10px 20px 10px 45px;
+            border: none;
+            border-bottom: 1px solid #ddd;
+        }
+        #myInput:focus {
+            outline: 3px solid #ddd;
+        }
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f6f6f6;
+            min-width: 230px;
+            border: 1px solid #ddd;
+            z-index: 1;
+            border-radius: 20px;
+        }
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+        .dropdown-content a:hover {
+            background-color: #f1f1f1;
+        }
+        .show {
+            display: block;
+        }
+    }
+
+    .table {
+        display: flex;
+        width: 100%;
+        justify-content: center;
+        table {
+            background-color: $color_Text_White;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: $shadow_box4;
+            border-collapse: collapse;
+           
+                th {
+                    padding: 10px 38px 10px 38px; 
+                    border-bottom: 1px solid #000000;
+                }
+            
+           
+                td {
+                    text-align: center;
+                    padding: 10px;
+                    border-bottom: 1px solid #ddd;
+                }
+               
+            
+        }
+    }
+
+    .backindex {
+        position: fixed;
+        margin: 18px 0px 0px 25px;
+        height: 30px;
+        border-radius: 100px;
+        width: 30px;
+        display: flex;
+        justify-content: center;
+        filter: drop-shadow(5px 5px 15px rgb(255, 255, 255));
+        transition: background-color 0.5s;
+    }
+    .backindex:hover {
+        position: fixed;
+        margin: 16px 0px 0px 22px;
+        height: 34px;
+        width: 35px;
+        backdrop-filter: blur(12px);
+        background-color: #9bbaa9;
+        border-radius: 1.6rem;
+        box-shadow: 5px 5px 25px 0 rgba(0, 0, 0, 0.1);
+    }
+}

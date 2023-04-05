@@ -1,0 +1,114 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+div.bodyL{
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    background-image: url(../Image/FondoLogin.jpeg);
+}
+
+div.box{
+    position: relative;
+    width: 60vh;
+    height: 80vh;
+    margin-top: 10vh;
+    background-color: #F3ECE6;
+    border-radius: 15px;
+    overflow: hidden;
+}
+.box::before{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 60vh;
+    height: 80vh;
+    background-color: #0D202B;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+}
+.box::after{
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 60vh;
+    height: 80vh;
+    background-color: #0D202B;
+    transform-origin: bottom right;
+    animation: animate 6s linear infinite;
+    animation-delay: -3s;
+}
+@keyframes animate{
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+.form{
+    position: absolute;
+    inset: 2px;
+    border-radius: 15px;
+    z-index: 10;
+    background-color: #F3ECE6;
+}
+img{
+    width: 35vh;
+    height: 35vh;
+    margin-top: -4vh;
+}
+.padre{
+    display: flex;
+    width: 100vw;
+  }
+  .pass{
+    width: 70%;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(0, 0, 61);
+    background-color: transparent;
+}
+.Correo{
+    width: 70%;
+    height: 30px;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: rgb(0, 0, 61);
+    background-color: transparent;
+}
+p.Cor{
+    margin-right: 34vh;
+    font-size: 18px;
+    font-weight: 500;
+}
+p.Con{
+    margin-right: 29vh;
+    font-size: 18px;
+    font-weight: 500;
+    margin-top: 5vh;
+}
+.BtnR{
+    background-color: #F3ECE6;
+    margin-top: 10vh;
+    height: 5vh;
+    width: 15vh;
+    border-radius: 8px;
+}
+.BtnR:hover{
+    border-style: double;
+    border-color: black;
+    font-size: 15px;
+    cursor: pointer;
+}

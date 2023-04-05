@@ -1,0 +1,164 @@
+@import "variables";
+
+body {
+    background-color: #eae1d8;
+    .body {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 22px;
+        justify-content: center;
+
+        .modulos {
+            flex: 1;
+            display: flex;
+            flex-wrap: wrap;
+            .moduloIzq {
+                width: 30px;
+                height: 100px;
+                .BtnIzq {
+                    height: 13vh;
+                    width: 23vh;
+                    margin-top: 2vh;
+                    margin-left: 7vh;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #f3ece6;
+                    font-family: "Gotham Book", sans-serif;
+                    font-size: 15px;
+                    box-shadow: $shadow_box4;
+                }
+                .BtnIzq:hover{ 
+                    height: 13vh;
+                    width: 23vh;
+                    margin-top: 2vh;
+                    margin-left: 7vh;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #9BBAA9;
+                    font-family: "Gotham Book", sans-serif;
+                    font-size: 15px;
+                    box-shadow: $shadow_box4;
+                    cursor: pointer;
+                    transform: translateY(-2px);
+                }
+            }
+            .moduloDer {
+                width: 30px;
+                height: 100px;
+                .BtnDer {
+                    height: 13vh;
+                    width: 23vh;
+                    margin-top: 2vh;
+                    margin-left: 32vh;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #f3ece6;
+                    font-family: "Gotham Book", sans-serif;
+                    font-size: 15px;
+                    box-shadow: $shadow_box4;
+                }
+                .BtnDer:hover{
+                    height: 13vh;
+                    width: 23vh;
+                    margin-top: 2vh;
+                    margin-left: 32vh;
+                    border-radius: 15px;
+                    border: none;
+                    background-color: #9BBAA9;
+                    font-family: "Gotham Book", sans-serif;
+                    font-size: 15px;
+                    box-shadow: $shadow_box4;
+                    cursor: pointer;
+                    transform: translateY(-2px);
+                }
+                
+            }
+        }
+        .info {
+            flex: 1;
+            .ranking {
+                background-color: $backgrouond_White;
+                margin: 10px;
+                height: 44%;
+                border-radius: 10px;
+                box-shadow: $shadow_box4;
+                .rankingTitulo {
+                    background-color: $backgrouond_Empresa;
+                    color: $color_Text_White;
+                    padding: 5px 10px 5px 10px;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+            }
+            .metas {
+                background-color: $backgrouond_White;
+                margin: 30px 10px 0px 10px;
+                height: 44%;
+                border-radius: 10px;
+                box-shadow: $shadow_box4;
+                .TitulosModulos {
+                    background-color: $backgrouond_Empresa;
+                    color: $color_Text_White;
+                    padding: 5px 10px 5px 10px;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+            }
+        }
+
+        .tareas {
+            flex: 1;
+            .rankingTitulo {
+                background-color: $backgrouond_White;
+                margin: 10px 10px 20px 10px;
+                height: 73vh;
+                border-radius: 10px;
+                box-shadow: $shadow_box4;
+                .TitulosModulos {
+                    background-color: $backgrouond_Empresa;
+                    color: $color_Text_White;
+                    padding: 5px 10px 5px 10px;
+                    border-radius: 10px;
+                    text-align: center;
+                }
+            }
+        }
+    }
+}
+
+@media (max-width: 390px) {
+    .body {
+        flex-direction: column;
+        background-position: center center;
+        background-size: cover;
+        
+    }
+    .modulos {
+        width: 100%;
+        margin-bottom: 100px;
+        height: auto;
+        display: flex;
+        flex-wrap: wrap;
+        .moduloDer{
+           margin-left: 200px;
+           
+        }
+        .moduloIzq{
+            margin-left: 20px;
+        } 
+    }
+    .info {
+        flex-direction: column;
+        width: 100%;
+        margin: 270px 0px 0px 0px;
+        height: auto;
+    }
+    .tareas{
+       
+        width: 100%;
+        margin: 10px 0px 0px 0px ;
+        .rankingTitulo{
+            height: 100px;
+        }
+    }
+}

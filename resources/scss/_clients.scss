@@ -1,0 +1,320 @@
+@import "variables";
+
+body {
+    background-color: #eae1d8;
+    a {
+        text-decoration: none;
+    }
+    .formSub {
+        margin: 60px;
+        padding: 20px;
+        .addContainer {
+            position: absolute;
+            width: 200px;
+            top: 150px;
+            left: 70px;
+            .addCustomer {
+                background-color: $color_Text_White;
+                border: none;
+                padding: 3px 15px 3px 10px;
+                margin-left: 10px;
+                border-radius: 30px;
+                background-image: url(/public/Image/IconoAgregar.png);
+                background-position: 10px center;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                background-size: 15px;
+                box-shadow: $shadow_box4; 
+            }
+            .addCustomer:hover {
+                background-color: rgb(233, 233, 233);
+                border: none;
+                padding: 3px 15px 3px 10px;
+                margin-left: 10px;
+                border-radius: 30px;
+                background-image: url(/public/Image/IconoAgregar.png);
+                background-position: 10px center;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                background-size: 15px;
+                box-shadow: $shadow_box4;
+                cursor: pointer;
+            }
+        }
+        th {
+            font-size: 16px;
+        }
+        td {
+            height: 8vh;
+        }
+
+        .Search {
+            border-radius: 13px;
+            border: none;
+            box-shadow: $shadow_box4;
+            background-color: $backgrouond_White;
+            position: absolute;
+            top: 150px;
+            right: 80px;
+            input {
+                padding: 3px 0px 3px 10px;
+                background: transparent;
+                border-radius: 13px;
+                border: none;
+                background-image: url(/public/Image/IconSearch.png);
+                background-position: 10px center;
+                background-repeat: no-repeat;
+                padding-left: 40px;
+                background-size: 15px;
+            }
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            color: $color_Text_White;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            .btnSaveClient {
+                background-color: $backgrouond_White;
+                padding: 4px 25px 4px 25px;
+                border-radius: 20px;
+                border: none;
+            }
+            .btnSaveClient:hover {
+                background-color: #9bbaa9;
+                padding: 4px 25px 4px 25px;
+                border-radius: 20px;
+                border: none;
+            }
+
+            .containerModal {
+                display: flex;
+                flex-wrap: wrap;
+                text-align: left;
+                margin: 30px 50px 50px 40px;
+
+                p {
+                    margin-top: 10px;
+                }
+                input {
+                    border-radius: 30px;
+                    border: none;
+                    padding: 4px 0px 4px 10px;
+                    margin-top: 10px;
+                    width: 80%;
+                }
+                .c1 {
+                    flex: 1;
+
+                    .inputFile {
+                        background-color: $backgrouond_White;
+                        color: black;
+                    }
+                    input[type="file"]::file-selector-button {
+                        background-color: $backgrouond_White;
+                        border: none;
+                    }
+                }
+                .c2 {
+                    flex: 1;
+                    select {
+                        border-radius: 30px;
+                        border: none;
+                        padding: 4px 0px 4px 10px;
+                        margin-top: 10px;
+                        width: 80%;
+                        font-weight: bold;
+                    }
+                }
+                .c3 {
+                    flex: 1;
+                    .code_Contact {
+                        display: flex;
+                        flex-wrap: wrap;
+                        width: 300px;
+                        .CP {
+                            flex: 1;
+                            input {
+                                width: 120px;
+                                border-radius: 30px;
+                                border: none;
+                            }
+                        }
+                        .contacto {
+                            flex: 1;
+                            input {
+                                width: 120px;
+                                border-radius: 30px;
+                                border: none;
+                            }
+                        }
+                    }
+                }
+                .c4 {
+                    flex: 1;
+                }
+            }
+            .modal-content {
+                background-color: $backgrouond_Empresa;
+                margin: 10% auto;
+                padding: 20px 25px 20px 25px;
+                border-radius: 30px;
+                width: 80%;
+                background-color: $shadow_box4;
+              
+            }
+            .close {
+                color: #ffffff;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: rgb(129, 129, 129);
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        .modal2 {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            color: $color_Text_White;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+
+            .modal-content2 {
+                background-color: $backgrouond_Empresa;
+                margin: 10% auto;
+                padding: 20px 25px 20px 25px;
+                border-radius: 30px;
+                width: 30%;
+                background-color: $shadow_box4;
+                img {
+                    width: 100px;
+                    height: 100px;
+                    padding: 20px;
+                    border-radius: 100px;
+                }
+                p {
+                    margin-top: 10px;
+                }
+               
+                form {
+                    margin-top: 20px;
+                    .btns {
+                        margin-top: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        padding: 8px 30px 8px 30px;
+                        margin: 10px 10px 10px 3px;
+                        font-weight: bold;
+                    }
+                    .btns:hover {
+                        margin-top: 20px;
+                        border-radius: 10px;
+                        border: none;
+                        padding: 8px 30px 8px 30px;
+                        margin: 10px 10px 10px 3px;
+                        background-color: #9bbaa9;
+                        font-weight: bold;
+                        color: $color_Text_White;
+                    }
+                }
+            }
+            .close {
+                color: #ffffff;
+                float: right;
+                font-size: 28px;
+                font-weight: bold;
+            }
+            .close:hover,
+            .close:focus {
+                color: rgb(129, 129, 129);
+                text-decoration: none;
+                cursor: pointer;
+            }
+        }
+        .info {
+            background-image: url(/public/Image/IconoAgregar.png);
+            background-position: 10px center;
+            background-repeat: no-repeat;
+
+            background-size: 15px;
+        }
+
+        .tabCustomer {
+            background-color: $color_Text_White;
+            margin-top: 20px;
+            background-color: $backgrouond_White;
+            border-radius: 30px;
+            color: black;
+            box-shadow: $shadow_box4;
+            font-size: 15px;
+            padding: 9px 30px 30px 30px;
+            max-height: 400px;
+            overflow: hidden;
+            text-align: center;
+            img {
+                width: 20px;
+            }
+            .table-container {
+                overflow-y: scroll;
+                max-height: 400px;
+            }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                thead th {
+                    position: sticky;
+                    top: 0;
+                    text-align: center;
+                    padding: 10px;
+                    background-color: $backgrouond_White;
+                    border-bottom: 1px solid black;
+                }
+
+                td {
+                    text-align: center;
+                    font-size: 15px;
+                    border-bottom: 1px solid #ddd;
+                    .btnE {
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    .btnB {
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    .btnE:hover {
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    .btnB:hover {
+                        background-color: white;
+                        border: none;
+                        cursor: pointer;
+                    }
+                    img {
+                        background-color: white;
+                    }
+                }
+            }
+        }
+    }
+}

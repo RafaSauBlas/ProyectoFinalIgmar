@@ -1,0 +1,147 @@
+@import "variables";
+
+body {
+    #contentCalendar {
+        display: flex;
+        flex-direction: row;
+        justify-content: end;
+        margin: 70px 70px 70px 0px;
+        #selectedDayofCalendar{
+            background-color: $backgrouond_Empresa;
+            width: 250px;
+            border-radius: 5px;
+            box-shadow: $shadow_box4;
+            #calendar1{
+                color: $color_Text_White;
+                text-align: center;
+                margin: 20px 0px 20px 0px;
+            }
+            #calendar2{
+                color: $color_Text_White;
+                text-align: center;
+                margin-bottom: 40px;
+                h1{
+                    font-size: 80px;
+                }
+            }
+            #calendar3{
+                color: $color_Text_White;
+                padding: 10px;
+                font-size: 16px;
+            }
+        }
+        .calendar-container {
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+            font-family: Arial, sans-serif;
+            align-items: center;
+            .calendar-header {
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                padding: 10px;
+                font-weight: bold;
+                background-color: #eae1d8;
+                border-top-left-radius: 5px;
+                border-top-right-radius: 5px;
+                h2{
+                    font-size: 30px;
+                    text-transform: lowercase;
+                }
+                h2:first-letter{
+                    font-size: 30px;
+                    text-transform: uppercase;
+                }
+            }
+            .calendar-body {
+                background-color: #eae1d8;
+            }
+            .prev-button,
+            .next-button {
+                border: none;
+                background-color: transparent;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .prev-button:hover,
+            .next-button:hover {
+                color: #555;
+            }
+
+            .month-year {
+                font-size: 20px;
+                font-weight: bold;
+            }
+
+            //table
+            table {
+                border-collapse: collapse;
+                width: 100%;
+                background-color: #eae1d8;
+            }
+
+            thead {
+                background-color: #f5f5f5;
+                color: black;
+                padding: 30px;
+            }
+
+            th {
+                padding: 10px;
+                font-size: 25px;
+                font-weight: lighter;
+                background-color: #eae1d8;
+            }
+            td {
+                padding: 20px;
+                text-align: center;
+                cursor: pointer;
+            }
+
+            td:hover {
+                background-color: rgb(161, 161, 161);
+                border-radius: 100px;
+                cursor: pointer;
+            }
+
+            .selected {
+                background-color: #008cba;
+                color: white;
+            }
+            .today {
+                background-color: $backgrouond_Empresa;
+                color: white;
+                border-radius: 100px;
+            }
+
+            .selected {
+                background-color: $bgTextClient;
+                border-radius: 100px;
+            }
+
+            .other-month {
+                color: #ccc;
+            }
+            .prev-button,
+            .next-button {
+                border: none;
+                background-color: transparent;
+                font-size: 24px;
+                cursor: pointer;
+            }
+
+            .prev-button:hover,
+            .next-button:hover {
+                color: #555;
+            }
+
+            .month-year {
+                font-size: 20px;
+                font-weight: bold;
+            }
+        }
+    }
+}

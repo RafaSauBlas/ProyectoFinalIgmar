@@ -1,0 +1,50 @@
+@import url('https://fonts.cdnfonts.com/css/gotham-book');
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
+body{
+    font-family: 'Gotham Book', sans-serif;
+    padding: 90px 0 0;
+    align-items: center; 
+}
+.header{
+    position: fixed;
+    background-color: #0D202B;
+    height: 14vh;
+    width: 100%;
+    top: 0;
+    left: 0;
+}
+.Navbar{
+    display: flex;
+}
+p.Title{
+    font-family: 'Gotham Book', sans-serif;
+    color: white;
+    font-size: 20px;
+    margin-top: 5vh;
+    margin-left: 26%;
+}
+img.logo{
+    width: 170px;
+    height:80px;
+    margin-top: .7vh;
+    margin-left: 3vh;
+}
+
+.closeSession{
+  font-size: 18px;
+  color: #F3ECE6;
+  cursor: pointer;
+  font-family: 'Gotham Book', sans-serif;
+  margin-left: 28%;
+  margin-top: 5.2vh;
+    a{
+        text-decoration: none;
+        color: white;
+    }
+    a:hover{
+        color: #9BBAA9;
+    }
+}                               

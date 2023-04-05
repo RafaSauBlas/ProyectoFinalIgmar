@@ -1,0 +1,152 @@
+@import "variables";
+body {
+    background-color: #eae1d8;
+    #FormProfile1 {
+        display: flex;
+        flex-wrap: wrap;
+        color: $color_Text_White;
+        margin: 20px 50px 30px 50px;
+        p{
+            margin-bottom: 8px;
+        }
+        .profileForm {
+            flex: 1;
+            background-color: $backgrouond_Empresa;
+            margin: 0px 60px 0px 60px;
+            padding: 10px 20px 0px 20px;
+            border-radius: 30px;
+            box-shadow: $shadow_box1;
+            font-size: 10px;
+            p{
+                font-size: 18px;
+            }
+            input{
+                font-size: 16px;
+                padding: 3px 5px 3px 7px;
+            }
+        }
+        .imagenProfile {
+            display: flex;
+            justify-content: center;
+            width: 100px;
+            height: 100px;
+            background-color: $backgrouond_White;
+            border-radius: 100%;
+            margin: 0 auto;
+            text-align: center;
+            margin-bottom: 10px;
+            box-shadow: $shadow_box1;
+        }
+        .imagenProfile img {
+            padding: 20px;
+            width: 100px;
+            height: 100px;
+        }
+    }
+    .space {
+        flex: 1;
+    }
+    input {
+        border-radius: 13px;
+        border: none;
+        box-shadow: $shadow_box2;
+        
+    }
+    .profileEdit input {
+        border-radius: 0%;
+        background-color: $backgrouond_Empresa;
+        color: $color_Text_White;
+        border-bottom: 2px solid $lineDown;
+        font-size: 18px;
+        padding: 5px;
+    }
+    select {
+        border-radius: 13px;
+        padding: 4px;
+        width: 98%;
+        box-shadow: $shadow_box2;
+    }
+    .Nombre,
+    .Puesto,
+    .Sucursal,
+    .Email,
+    .Contraseña {
+        margin-bottom: 10px;
+    }
+    
+    .profileEdit {
+        flex: 1;
+        background-color: $backgrouond_Empresa;
+        border-radius: 30px;
+        padding: 0px 30px 0px 30px;
+        margin: 0px 60px 0px 60px;
+        box-shadow: $shadow_box1;
+        input{
+            font-size: 16px;
+        }
+        
+    }
+    .profileEdit h4 {
+        padding: 10px;
+        margin: 10px;
+        text-align: center;
+    }
+    button {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 7px 20px 7px 20px;
+        margin-bottom: 10px;
+        border-radius: 13px;
+        border: none;
+        box-shadow: $shadow_box2;
+    }
+    button:hover {
+        display: flex;
+        justify-content: center;
+        margin: 0 auto;
+        padding: 7px 20px 7px 20px;
+        margin-bottom: 10px;
+        border-radius: 13px;
+        background-color: #c5c4c4;
+        box-shadow: $shadow_box2;
+    }
+}
+
+
+
+@media (max-width: 768px) {
+    #FormProfile1 {
+        flex-direction: column;
+        background-position: center center;
+        background-size: cover;
+    }
+    .profileEdit {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+    .space {
+        width: 100%;
+        padding: 10px;
+    }
+
+    .profileForm {
+        width: 100%;
+        
+    }
+}
+@media screen and (max-width: 480px) {
+    .Empresa,
+    .Email {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+@media screen and (min-width: 481px) {
+    .Empresa,
+    .Email {
+        width: 100%;
+        max-width: 625px;
+       
+    }
+}
