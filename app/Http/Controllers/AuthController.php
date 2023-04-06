@@ -61,14 +61,14 @@ class AuthController extends Controller
 
     public function signUp(Request $request)
     {
-        $request->validate([
-            'name'=>'required',
-            'lastname'=>'required',
-            'branchoffice'=>'required',
-            'email'=>'required|email',
-            'password'=>'required',
-            'area'=>'required'
-        ]);
+        // $request->validate([
+        //     'name'=>'required',
+        //     'lastname'=>'required',
+        //     'branchoffice'=>'required',
+        //     'email'=>'required|email',
+        //     'password'=>'required',
+        //     'area'=>'required'
+        // ]);
         $user = new User();
         $user->name = $request->name;
         $user->lastname = $request->lastname;
