@@ -33,6 +33,9 @@ class RouteServiceProvider extends ServiceProvider
      *
      * @return void
      */
+
+     public const CODIGO = '/espera';
+
     public function boot()
     {
         $this->configureRateLimiting();

@@ -19,9 +19,18 @@ class UserSeeder extends Seeder
             'name' => 'Carlos',
             'lastname' => 'Slim Saucedo',
             'branchoffice' => 'Torreón',
-            'email' => 'admin@hotmail.com',
+            'email' => 'RafaSauBlas@hotmail.com',
             'password' => bcrypt('admin'),
             'area' => 2
+        ]);
+
+        $user = User::create([
+            'name' => 'admin',
+            'lastname' => 'Saucedo',
+            'branchoffice' => 'Torreón',
+            'email' => 'admin@hotmail.com',
+            'password' => bcrypt('admin'),
+            'area' => 1
         ]);
 
         // $user2 = User::create([

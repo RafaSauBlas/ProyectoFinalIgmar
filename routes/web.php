@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CustomerController;
+use Illuminate\Http\Request;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,7 +27,24 @@ Route::post('session',[AuthController::class,'login'])->name('session');
 
 Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');
 
-Route::middleware(['auth'])->group(function () {
+Route::get('/vistas/codigo', function(Request $request){
+    if (! $request->hasValidSignature()) {
+        abort(401);
+    }
+    else{
+        return view('Otros.muestracodigo')->with('codigo', $request->codigo);
+    }
+})->name('vcodigo');
+
+Route::get('espera', function () {
+    return view('Otros.codigo');
+});
+
+Route::get('/espera', function () { return view('Otros.codigo'); })->name('espera');
+
+//auth
+//valid
+Route::middleware(['valid'])->group(function () {
     //VIEWS
     Route::get('dashboard',[ViewController::class,'dashboardView'])->name('dashboardView');
     Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');

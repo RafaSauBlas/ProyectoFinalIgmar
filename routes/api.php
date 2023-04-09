@@ -26,9 +26,13 @@ Route::prefix('auth')->group(function () {
 
 Route::post('/registrar', [AuthController::class, 'signUp']);
 
+Route::post('/eviacodigo', [AuthController::class, 'enviacodigo']);
+
 Route::middleware(['jwt.verify'])->prefix('auth')->group(function () {
     Route::get('/userinfo',[AuthController::class,'getAuthenticatedUser']);
 });
+
+Route::post('logeocodigo', [AuthController::class, 'ValidaCodigo'])->name('logeocodigo');
 
 
 
