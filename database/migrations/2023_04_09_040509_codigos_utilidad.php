@@ -13,7 +13,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('codigos_utilidad', function (Blueprint $table) {
+        Schema::create('codigo_utilidads', function (Blueprint $table) {
             $table->string('codigo')->nullable();
             $table->timestamp('codigo_created_at')->nullable();
             $table->timestamp('codigo_verified_at')->nullable();
@@ -30,6 +30,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('codigos_utilidad');
+        Schema::dropIfExists('codigo_utilidads');
     }
 };

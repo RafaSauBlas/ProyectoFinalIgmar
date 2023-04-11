@@ -4,9 +4,9 @@
     <title>Rafael INC incorporated asocieshon company</title>
 </head>
 <body>
-<h4><p> Su codigo para {{ $utilidad }}: </p></h4>
-<p>{{ $code }}</p>
+<p> El codigo que solicitó ya está listo, puede verlo en la siguiente ruta: </p>
+<p><a href="{{ $code }}">{{ $code }}</a></p>
                                         
-    <b><p>Este codigo solo pude ser utilizado por usted y tiene un tiempo limite de 10 minutos</p></b>
+    <p>Este codigo solo pude ser utilizado una sola vez por usted y tiene un tiempo de vida de 10 minutos</p>
 </body>
 </html>

@@ -27,14 +27,19 @@ class Validado
             }
         }
 
-        if (auth()->check() && $valido != false || auth()->user()->area == 1){
-            return $next($request);
-        }
-        elseif(auth()->check()){
-            return redirect()->intended(RouteServiceProvider::CODIGO);
+        if(auth()->check()){
+            if($valido != false || auth()->user()->area == 1){
+                return $next($request);
+            }
+            elseif(auth()->check()){
+                return redirect()->intended(RouteServiceProvider::CODIGO);
+            }
+            else{
+                //return $next($request);
+                return redirect('login');
+            }
         }
         else{
-            //return $next($request);
             return redirect('login');
         }
 

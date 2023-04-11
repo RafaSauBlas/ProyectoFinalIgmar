@@ -219,7 +219,7 @@ class AuthController extends Controller
             'codigo_verified_at'  => NULL,
             'funcion' => $utilidad,
             'user_id' => $id,
-            'user_crea_id' => auth()->user()->name,
+            'user_crea_id' => auth()->user()->id,
         ]);
         
         if($codigomail)
@@ -239,9 +239,10 @@ class AuthController extends Controller
             return false;
         }
     }
+    
 
-    public function enviacodigoutiulidad($mail, $utilidad, $codigo){
-        if(Mail::to($mail)->send(new CodigoLogin($utilidad, $codigo))){
+    public function enviacodigoutiulidad($mail, $URL, $utilidad){
+        if(Mail::to($mail)->send(new CodigoUsar($URL, $utilidad))){
             return true;
         }
         else{
@@ -274,6 +275,31 @@ class AuthController extends Controller
         }
     }
 
+    Public function ValidaCodigoUtilidad(Request $request){
+        $request->validate([
+            'codigo' => 'required|numeric',
+        ]);
+        $cod = $request->codigo;
+        $codigos = DB::table('codigo_utilidads')->select('codigo', 'codigo_created_at', 'user_id')->get();
+        
+        foreach($codigos as $code){
+            if(Hash::check($cod, $code->codigo)){
+                $date = Carbon::now();
+                if($date->subminutes(5) <= $code->codigo_created_at){
+                    if(DB::table('codigo_utilidads')->where('user_id', $code->user_id)->update(['codigo_verified_at' => Carbon::now()])){
+                        return true;
+                    }
+                    else{
+                        return false;
+                    }
+                }
+                else{
+                    return view("Otros.muestracodigoutilidad")->with("codigo", $cod);
+                }
+            }
+        }
+    }
+
     public function Redireccion($usuario)
     {
         $codigo = self::GeneraCodigo($usuario->id);
@@ -290,4 +316,28 @@ class AuthController extends Controller
             }
         }
     }
+
+    public function SendCodigoUtilidad($id, $utilidad){
+        $usuario = DB::table('users')->where('id', $id)->select('id', 'email', 'area')->first();
+        $codigo = self::GeneraCodigoUtilidad($id, $utilidad);
+        if(! $codigo){
+
+        }
+        else
+        {
+            if($utilidad == 1){
+                $utilidad = 'ELIMINAR';
+            }
+            else{
+                $utilidad = 'ACTUALIZAR';
+            }
+            $URL = URL::temporarySignedRoute('vcodigoutilidad', now()->addMinutes(5), ['codigo' => $codigo, 'utilidad' => $utilidad]);
+            $continue = self::enviacodigoutiulidad($usuario->email, $URL, $utilidad);
+            if($continue == true){
+                // return redirect()->intended(RouteServiceProvider::CODIGO);
+                return redirect('/');
+            }
+        }
+    }
+
 }

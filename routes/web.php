@@ -27,15 +27,6 @@ Route::post('session',[AuthController::class,'login'])->name('session');
 
 Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');
 
-Route::get('/vistas/codigo', function(Request $request){
-    if (! $request->hasValidSignature()) {
-        abort(401);
-    }
-    else{
-        return view('Otros.muestracodigo')->with('codigo', $request->codigo);
-    }
-})->name('vcodigo');
-
 Route::get('espera', function () {
     return view('Otros.codigo');
 });
@@ -81,5 +72,23 @@ Route::middleware(['valid'])->group(function () {
         
     });
 
+    //VISTAS DE CODIGOS
+    Route::get('/vistas/codigo', function(Request $request){
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
+        else{
+            return view('Otros.muestracodigo')->with('codigo', $request->codigo);
+        }
+    })->name('vcodigo');
+    
+    Route::get('/vistas/codigoutilidad', function(Request $request){
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
+        else{
+            return view('Otros.muestracodigoutilidad')->withCodigo($request->codigo)->withUtilidad($request->utilidad);
+        }
+    })->name('vcodigoutilidad');
 
 });

@@ -34,5 +34,4 @@ Route::middleware(['jwt.verify'])->prefix('auth')->group(function () {
 
 Route::post('logeocodigo', [AuthController::class, 'ValidaCodigo'])->name('logeocodigo');
 
-
-
+Route::post('validacodigo', [AuthController::class, 'ValidaCodigoUtilidad']);
