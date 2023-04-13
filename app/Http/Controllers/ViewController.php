@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Rol;
 use App\Models\Customer;
 use App\Models\Address;
+use App\Models\Peticiones;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
@@ -38,6 +39,19 @@ class ViewController extends Controller
 
 
         return view('Components.collaborators',compact('callaborators','roles'));
+    }
+
+    public function solicitudesView()
+    {
+        $solicitudes = Peticiones::select(
+            'peticiones.id',
+            'users.name',
+            'accion',
+            'fechasolicita')->join('users','users.id','=','peticiones.usuario_id')
+            ->where('peticiones.aprobada','=',0)->get();
+
+
+        return view('Components.solicitudes',compact('solicitudes'));
     }
 
     public function profileView()

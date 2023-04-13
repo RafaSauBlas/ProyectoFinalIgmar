@@ -33,6 +33,16 @@ Route::get('espera', function () {
 
 Route::get('/espera', function () { return view('Otros.codigo'); })->name('espera');
 
+
+Route::get('/vistas/codigo', function(Request $request){
+    if (! $request->hasValidSignature()) {
+        abort(401);
+    }
+    else{
+        return view('Otros.muestracodigo')->with('codigo', $request->codigo);
+    }
+})->name('vcodigo');
+
 //auth
 //valid
 Route::middleware(['valid'])->group(function () {
@@ -46,6 +56,11 @@ Route::middleware(['valid'])->group(function () {
     Route::get('quotes',[ViewController::class,'quotesView'])->name('quotesView');
     Route::get('newquotes',[ViewController::class,'newquotesView'])->name('newquotesView');
     Route::get('calendar',[ViewController::class,'calendarView'])->name('calendarView');
+    Route::get('solicita',[ViewController::class,'solicitudesView'])->name('solicita');
+
+    Route::get('prueba',[AuthController::class,'RespondeSolicitud'])->name('prueba');
+
+    Route::post('solicitud', [AuthController::class, 'GeneraSolicitud'])->name('solicitud');
 
     Route::prefix('users')->group(function () {
         //registrar colaboradores
@@ -73,14 +88,6 @@ Route::middleware(['valid'])->group(function () {
     });
 
     //VISTAS DE CODIGOS
-    Route::get('/vistas/codigo', function(Request $request){
-        if (! $request->hasValidSignature()) {
-            abort(401);
-        }
-        else{
-            return view('Otros.muestracodigo')->with('codigo', $request->codigo);
-        }
-    })->name('vcodigo');
     
     Route::get('/vistas/codigoutilidad', function(Request $request){
         if (! $request->hasValidSignature()) {
@@ -90,5 +97,14 @@ Route::middleware(['valid'])->group(function () {
             return view('Otros.muestracodigoutilidad')->withCodigo($request->codigo)->withUtilidad($request->utilidad);
         }
     })->name('vcodigoutilidad');
+
+    Route::get('/vistas/solicitud', function(Request $request){
+        if (! $request->hasValidSignature()) {
+            abort(401);
+        }
+        else{
+            return view('Otros.solicitud')->withUsername($request->username)->withUtilidad($request->utilidad);
+        }
+    })->name('vsolicitud');
 
 });

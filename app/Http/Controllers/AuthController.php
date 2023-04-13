@@ -14,8 +14,10 @@ use Tymon\JWTAuth\Exceptions\JWTException;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\CodigoLogin;
 use App\Mail\CodigoUsar;
+use App\Mail\SolicitaCodigo;
 use App\Models\CodigosLogin;
 use App\Models\CodigoUtilidad;
+use App\Models\Peticiones;
 use Illuminate\Support\Facades\URL;
 use Illuminate\Support\Facades\DB;
 
@@ -219,7 +221,28 @@ class AuthController extends Controller
             'codigo_verified_at'  => NULL,
             'funcion' => $utilidad,
             'user_id' => $id,
-            'user_crea_id' => auth()->user()->id,
+            'user_crea_id' => Auth::user()->id,
+        ]);
+        
+        if($codigomail)
+        {
+            return $codigo;
+        }
+        else{
+            return false;
+        }
+    }
+
+    Public function GeneraSolicitud(Request $request)
+    {
+        $accion = $request->accion;
+        $solicitud = Peticiones::create([
+            'usuario_id' => Auth::user()->id,
+            'accion' => $accion,
+            'fechasolicita' => Carbon::now(),
+            'aprobada' => NULL,
+            'fechaaprueba' => NULL,
+            'usuario_autoriza'=> NULL,
         ]);
         
         if($codigomail)
@@ -243,6 +266,19 @@ class AuthController extends Controller
 
     public function enviacodigoutiulidad($mail, $URL, $utilidad){
         if(Mail::to($mail)->send(new CodigoUsar($URL, $utilidad))){
+            return true;
+        }
+        else{
+            return false;
+        }
+    }
+
+    public function enviasolicitud(Request $request){
+        $username = $request->username;
+        $utilidad = $request->utilidad;
+        $usuario = DB::table('users')->where('name', $username)->select('id', 'email', 'area')->first();
+        $URL = URL::temporarySignedRoute('vsolicitud', now()->addMinutes(5), ['username' => $username, 'utilidad' => $utilidad]);
+        if(Mail::to($usuario->email)->send(new SolicitaCodigo($URL))){
             return true;
         }
         else{
@@ -317,9 +353,9 @@ class AuthController extends Controller
         }
     }
 
-    public function SendCodigoUtilidad($id, $utilidad){
-        $usuario = DB::table('users')->where('id', $id)->select('id', 'email', 'area')->first();
-        $codigo = self::GeneraCodigoUtilidad($id, $utilidad);
+    public function SendCodigoUtilidad($nombre, $utilidad){
+        $usuario = DB::table('users')->where('name', $nombre)->select('id', 'email', 'area')->first();
+        $codigo = self::GeneraCodigoUtilidad($usuario->id, $utilidad);
         if(! $codigo){
 
         }
@@ -334,8 +370,25 @@ class AuthController extends Controller
             $URL = URL::temporarySignedRoute('vcodigoutilidad', now()->addMinutes(5), ['codigo' => $codigo, 'utilidad' => $utilidad]);
             $continue = self::enviacodigoutiulidad($usuario->email, $URL, $utilidad);
             if($continue == true){
-                // return redirect()->intended(RouteServiceProvider::CODIGO);
-                return redirect('/');
+                return redirect()->back();
+            }
+        }
+    }
+
+    public function RespondeSolicitud(Request $request){
+        $id = $request->id;
+        $respuesta = $request->respuesta;
+        $utilidad = $request->utilidad;
+        $solicitud = Peticiones::find($id);
+        $usuario = User::find($solicitud->usuario_id);
+        if($respuesta  == 'acepta'){
+            if(Peticiones::where('id', $id)->update(['aprobada' => 1,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id])){
+                return self::SendCodigoUtilidad($usuario->name, $utilidad);
+            }
+        }
+        else{
+            if(Peticiones::where('id', $id)->update(['aprobada' => 1,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id])){
+                return redirect()->back();
             }
         }
     }

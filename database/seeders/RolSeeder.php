@@ -16,31 +16,15 @@ class RolSeeder extends Seeder
     public function run()
     {
         $rol = new Rol();
-        $rol->area = "Direccion";
+        $rol->area = "Mortal";
         $rol->save();
 
         $rol1 = new Rol();
-        $rol1->area = "Administrativo";
+        $rol1->area = "Semidios";
         $rol1->save();
 
         $rol = new Rol();
-        $rol->area = "Asesora";
+        $rol->area = "Dios";
         $rol->save();
-
-        $rol1 = new Rol();
-        $rol1->area = "Quimico";
-        $rol1->save();
-
-        $rol = new Rol();
-        $rol->area = "Coordinador de Operaciones";
-        $rol->save();
-
-        $rol1 = new Rol();
-        $rol1->area = "Operador";
-        $rol1->save();
-
-        $rol1 = new Rol();
-        $rol1->area = "Almacenistas";
-        $rol1->save();
     }
 }

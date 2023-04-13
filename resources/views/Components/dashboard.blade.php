@@ -71,6 +71,11 @@
                         <p>Cotizaciones</p>
                     </button>
                 </a>
+                <a href="/solicita">
+                  <button class="BtnDer"> <img class="ImgBtn" src="/Image/IconUsuario.png" width="40" height="40" />
+                    <p>Panel de solicitudes</p>
+                  </button>
+                </a>
             </div>
         </div>
 
@@ -90,12 +95,11 @@
         <div class="tareas">
             <div class="rankingTitulo">
                 <p class="TitulosModulos">Tareas</p>
-
             </div>
-
         </div>
-
     </div>
+
+
 </body>
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
