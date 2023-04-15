@@ -8,7 +8,7 @@
     @vite(['resources/scss/_collaborators.scss', 'resources/js/app.js'])
     @vite(['resources/scss/_menu.scss'])
     <link href="https://fonts.cdnfonts.com/css/gotham-book" rel="stylesheet">
-    <title>Colaboradores</title>
+    <title>Trabajadores</title>
 
 </head>
 
@@ -20,7 +20,7 @@
     <div class="grid_Two">
         <div class="padre">
             <div class="titleCollaborators">
-                <p class="AgregarTitulo">Agregar Colaborador</p>
+                <p class="AgregarTitulo">Agregar Trabajador</p>
             </div>
             <form class="form" method="POST" action="{{ url('users/signup') }}">
                 @csrf
@@ -43,10 +43,10 @@
                 <div class="Sucursal">
                     <p class="Text" for="Sucursal">Sucursal</p>
                     <select class="Seleccionar" id="Sucursal" name="branchoffice" required>
-                        <option value="Oficinas XENT">Oficinas XENT</option>
-                        <option value="Monterrey">Monterrey</option>
-                        <option value="Guadalajara">Guadalajara</option>
-                        <option value="Cancún">Cancún</option>
+                        <option value="Oficinas XENT">Disquera MTY</option>
+                        <option value="Monterrey">Disquera TRC</option>
+                        <option value="Guadalajara">Disquera GDL</option>
+                        <option value="Cancún">Disquera CUN</option>
                     </select>
                 </div>
                 <p class="Text" for="Area">Área</p>

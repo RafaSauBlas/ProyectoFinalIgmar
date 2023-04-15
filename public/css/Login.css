@@ -11,7 +11,7 @@ div.bodyL{
     justify-content: center;
     text-align: center;
     display: flex;
-    background-image: url(../Image/FondoLogin.jpeg);
+    background-color: #99b6c7;
 }
 
 div.box{
@@ -59,7 +59,7 @@ div.box{
     inset: 2px;
     border-radius: 15px;
     z-index: 10;
-    background-color: #F3ECE6;
+    background-color: #fff;
 }
 img{
     width: 35vh;
@@ -100,7 +100,7 @@ p.Con{
     margin-top: 5vh;
 }
 .BtnR{
-    background-color: #F3ECE6;
+    background-color: #99b6c7;
     margin-top: 10vh;
     height: 5vh;
     width: 15vh;

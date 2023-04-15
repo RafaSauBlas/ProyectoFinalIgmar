@@ -26,79 +26,24 @@
                         <p>Mi Perfil</p>
                     </button>
                 </a>
-                <a href="/calendar">
-                    <button class="BtnIzq"><img class="ImgBtn" src="/Image/IconCalendario.png" width="40"
-                            height="40" />
-                        <p>Calendario</p>
-                    </button>
-                </a>
-                <button class="BtnIzq"><img class="ImgBtn" src="/Image/IconRutas.png" width="40" height="40" />
-                    <p>Rutas</p>
-                </button>
-                <a href="/customers">
-                    <button class="BtnIzq"><img class="ImgBtn" src="/Image/IconClientes.png" width="40"
-                            height="40" />
-                        <p>Clientes</p>
-                    </button>
-                </a>
-                <button class="BtnIzq"><img class="ImgBtn" src="/Image/IconRequisiciones.png" width="40"
-                        height="40" />
-                    <p>Requisiciones</p>
-                </button>
+               
+               
             </div>
 
             <div class="moduloDer">
-                <button class="BtnDer"><img class="ImgBtn" src="/Image/IconInventario.png" width="40"
-                        height="40" />
-                    <p>Almacen</p>
-                </button>
-                <button class="BtnDer"><img class="ImgBtn" src="/Image/IconAdministrativo.png" width="40"
-                        height="40" />
-                    <p>Administrativo</p>
-                </button>
                 <a href="/collaborators"><button class="BtnDer"><img class="ImgBtn" src="/Image/IconColaboradores.png"
                             width="40" height="40" />
-                        <p>Colaboradores</p>
+                        <p>Trabajadores</p>
+                    </button></a>
+                    <a href="/calendar"><button class="BtnDer"><img class="ImgBtn" src="/Image/IconColaboradores.png"
+                            width="40" height="40" />
+                        <p>Discos</p>
                     </button></a>
 
-                <button class="BtnDer"><img class="ImgBtn" src="/Image/IconQuimicos.png" width="40"
-                        height="40" />
-                    <p>Químicos</p>
-                </button>
-                <a href="/quotes">
-                    <button class="BtnDer"><img class="ImgBtn" src="/Image/IconCotizaciones.png" width="40"
-                            height="40" />
-                        <p>Cotizaciones</p>
-                    </button>
-                </a>
-                <a href="/solicita">
-                  <button class="BtnDer"> <img class="ImgBtn" src="/Image/IconUsuario.png" width="40" height="40" />
-                    <p>Panel de solicitudes</p>
-                  </button>
-                </a>
             </div>
         </div>
 
-        <div class="info">
-            <div class="ranking">
-                <div class="rankingTitulo">
-                    <p class="TitulosModulos">Ranking</p>
-                </div>
-            </div>
-            <div class="metas">
-                <div class="rankingTitulo">
-                    <p class="TitulosModulos">Metas</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="tareas">
-            <div class="rankingTitulo">
-                <p class="TitulosModulos">Tareas</p>
-            </div>
-        </div>
-    </div>
-
+       
 
 </body>
 

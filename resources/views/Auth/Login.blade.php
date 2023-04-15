@@ -14,7 +14,7 @@
              <div class="box">
                 <form class="form" method="POST" action="{{url('session')}}">
                     @csrf
-                    <img src="/Image/Xent logo.png" alt="">
+                    <img src="/Image/Monster.png" style="whith 15vh; height: 35vh;" alt="">
                     <div class="email">
                          <p class="Cor">Correo</p>
                          <input class="Correo" type="email" name="email" placeholder="Ingrese su correo" required="required">
