@@ -17,6 +17,8 @@ use Illuminate\Http\Request;
 |
 */
 
+
+
 Route::get('/', function () {
     return view('Auth.login');
 });
@@ -57,7 +59,7 @@ Route::middleware(['valid'])->group(function () {
     Route::get('newquotes',[ViewController::class,'newquotesView'])->name('newquotesView');
     Route::get('calendar',[ViewController::class,'calendarView'])->name('calendarView');
     Route::get('solicita',[ViewController::class,'solicitudesView'])->name('solicita');
-
+  
     Route::get('prueba',[AuthController::class,'RespondeSolicitud'])->name('prueba');
 
     Route::post('solicitud', [AuthController::class, 'GeneraSolicitud'])->name('solicitud');
@@ -71,10 +73,20 @@ Route::middleware(['valid'])->group(function () {
         Route::put('updateuser',[AuthController::class,'UpdateUser'])->name('UpdateUser');
     });
 
+
+
     Route::prefix('collaborators')->group(function () {
         Route::put('updateCollaborator/{id}',[AuthController::class,'UpdateCollaborator'])->name('UpdateCollaborator');
         Route::delete('deleteColl/{id}',[AuthController::class,'deleteCollaborator'])->name('deleteCollaborator');
     });
+
+    Route::prefix('discos')->group(function () {
+        Route::put('disco.edit/{id}',[DiscoController::class,'disco.edit'])->name('disco.edit');
+        Route::post('disco.create',[DiscoController::class,'disco.create'])->name('disco.create');
+        Route::delete('disco.delete/{id}',[DiscoController::class,'disco.delete'])->name('disco.delete');
+    });
+
+
 
     Route::prefix('client')->group(function () {
         Route::post('storeclient',[CustomerController::class,'addCustomer'])->name('addCustomer');
@@ -108,3 +120,6 @@ Route::middleware(['valid'])->group(function () {
     })->name('vsolicitud');
 
 });
+
+
+    
