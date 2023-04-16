@@ -35,7 +35,7 @@
                             width="40" height="40" />
                         <p>Trabajadores</p>
                     </button></a>
-                    <a href="/calendar"><button class="BtnDer"><img class="ImgBtn" src="/Image/IconColaboradores.png"
+                    <a href="/calendar"><button class="BtnDer"><img class="ImgBtn" src="/Image/vinilo.png"
                             width="40" height="40" />
                         <p>Discos</p>
                     </button></a>
