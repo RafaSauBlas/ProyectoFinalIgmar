@@ -125,3 +125,6 @@ Route::middleware(['valid'])->group(function () {
 
 
     Route::resource('discos', App\Http\Controllers\DiscoController::class);
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
