@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CustomerController;
 use Illuminate\Http\Request;
+use App\Http\Controllers\DiscoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -81,9 +82,10 @@ Route::middleware(['valid'])->group(function () {
     });
 
     Route::prefix('discos')->group(function () {
-        Route::put('disco.edit/{id}',[DiscoController::class,'disco.edit'])->name('disco.edit');
-        Route::post('disco.create',[DiscoController::class,'disco.create'])->name('disco.create');
-        Route::delete('disco.delete/{id}',[DiscoController::class,'disco.delete'])->name('disco.delete');
+        Route::put('disco.edit/{id}',[DiscoController::class,'edit'])->name('edit');
+        Route::get('disco.create',[DiscoController::class,'create'])->name('create');
+        Route::delete('disco.delete/{id}',[DiscoController::class,'delete'])->name('delete');
+        Route::post('disco.store',[DiscoController::class,'store'])->name('store');
     });
 
 
@@ -122,4 +124,4 @@ Route::middleware(['valid'])->group(function () {
 });
 
 
-    
+    Route::resource('discos', App\Http\Controllers\DiscoController::class);
