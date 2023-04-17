@@ -13,12 +13,12 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Disco') }}
+                                {{ __('Discos') }}
                             </span>
 
                              <div class="float-right">
                                 <a href="{{ route('discos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Create New') }}
+                                  {{ __('Agregar nuevo') }}
                                 </a>
                               </div>
                         </div>
