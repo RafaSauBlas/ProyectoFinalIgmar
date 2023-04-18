@@ -4,11 +4,26 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
+        <div class="row mb-3"></div>
+        <div class="row mb-3"></div>
+        <div class="row mb-3"></div>
+        <div class="row mb-3"></div>
+        <div class="row mb-3"></div>
+        <div class="row mb-3"></div>
+        
             <div class="card">
-                <div class="card-header">{{ __('Iniciar Sesion') }}</div>
-
                 <div class="card-body">
-                    <form method="POST" action="{{ route('login') }}">
+                <div class="row mb-3"></div>
+                        <div class="row mb-3"></div>
+                        <div class="row mb-3">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Faf%2FSquare_Enix_logo.svg%2F2560px-Square_Enix_logo.svg.png&f=1&nofb=1&ipt=510f7cb67c4dbb07eaf36e2169a4d10423cefad55131305750c7b13e6158e341&ipo=images"
+                                 alt="" style="height:256; width:256px"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row mb-3"></div>
+                        <div class="row mb-3"></div>
+                    <form method="POST" action="{{ route('session') }}">
                         @csrf
 
                         <div class="row mb-3">
@@ -39,29 +54,11 @@
                             </div>
                         </div>
 
-                        <div class="row mb-3">
-                            <div class="col-md-6 offset-md-4">
-                                <div class="form-check">
-                                    <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                                    <label class="form-check-label" for="remember">
-                                        {{ __('Recordar') }}
-                                    </label>
-                                </div>
-                            </div>
-                        </div>
-
                         <div class="row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     {{ __('Iniciar Sesion') }}
                                 </button>
-
-                                @if (Route::has('password.request'))
-                                    <a class="btn btn-link" href="{{ route('password.request') }}">
-                                        {{ __('¿Olvidaste tu contraseña?') }}
-                                    </a>
-                                @endif
                             </div>
                         </div>
                     </form>

@@ -20,13 +20,19 @@ use App\Http\Controllers\DiscoController;
 
 
 
-Route::get('/', function () {
-    return view('Auth.login');
+
+
+
+
+Route::middleware(['logeado'])->group(function () {
+    Route::get('/', function () {
+        return view('Auth.login');
+    });
+    Route::get('login',[ViewController::class,'loginView'])->name('login');
 });
 
-Route::get('login',[ViewController::class,'loginView'])->name('login');
 //ruta de iniciar sesion
-Route::post('session',[AuthController::class,'login'])->name('session');
+
 
 Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');
 
@@ -48,7 +54,11 @@ Route::get('/vistas/codigo', function(Request $request){
 
 //auth
 //valid
+Route::post('session',[AuthController::class,'login'])->name('session');
+
 Route::middleware(['valid'])->group(function () {
+    Route::resource('discos', App\Http\Controllers\DiscoController::class);
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     //VIEWS
     Route::get('dashboard',[ViewController::class,'dashboardView'])->name('dashboardView');
     Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');
@@ -123,9 +133,4 @@ Route::middleware(['valid'])->group(function () {
 
 });
 
-
-    Route::resource('discos', App\Http\Controllers\DiscoController::class);
-
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

@@ -48,7 +48,7 @@ class DiscoController extends Controller
         $disco = Disco::create($request->all());
 
         return redirect()->route('discos.index')
-            ->with('success', 'Disco created successfully.');
+            ->with('success', 'Nuevo disco registrado.');
     }
 
     /**
@@ -91,7 +91,7 @@ class DiscoController extends Controller
         $disco->update($request->all());
 
         return redirect()->route('discos.index')
-            ->with('success', 'Disco updated successfully');
+            ->with('success', 'El disco se actualizó correctamente.');
     }
 
     /**
@@ -105,6 +105,6 @@ class DiscoController extends Controller
         return view('disco.delete', compact('disco'));
         
         return redirect()->route('discos.index')
-            ->with('success', 'Disco deleted successfully');
+            ->with('success', 'Disco eliminado correctamente');
     }
 }

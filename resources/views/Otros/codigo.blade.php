@@ -1,4 +1,61 @@
-<!DOCTYPE html>
+@extends('layouts.app')
+@section('content')
+<div class="container">
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+<div class="row mb-3"></div>
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <form method="POST" action="{{ route('logeocodigo') }}">
+                        @csrf
+                        <div class="row mb-3"></div>
+                        <div class="row mb-3"></div>
+                        <div class="row mb-3">
+                            <div class="col-md-4"></div>
+                            <div class="col-md-4"><img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2Fthumb%2Fa%2Faf%2FSquare_Enix_logo.svg%2F2560px-Square_Enix_logo.svg.png&f=1&nofb=1&ipt=510f7cb67c4dbb07eaf36e2169a4d10423cefad55131305750c7b13e6158e341&ipo=images"
+                                 alt="" style="height:256; width:256px"></div>
+                            <div class="col-md-4"></div>
+                        </div>
+                        <div class="row mb-3"></div>
+                        <div class="row mb-3"></div>
+                        <center><h2>Codigo de seguridad</h2></center>
+                         <br>
+                        <div class="row mb-3">
+                        <div class="col-md-3"></div>
+                            <div class="col-md-6">
+                                <input id="codigo" type="number" class="form-control @error('codigo') is-invalid @enderror" name="codigo" value="{{ old('email') }}"
+                                required placeholder="Ingrese su codigo de seguridad" autofocus style="text-align:center;">
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+                        <div class="row mb-3">
+                        <div class="col-md-5"></div>
+                            <div class="col-md-4">
+                                <button class="btn btn-primary" type="submit">Validar codigo</button>
+                            </div>
+                            <div class="col-md-5"></div>
+                        </div>
+                        <div class="row mb-3"></div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,41 +87,4 @@
              </div>
         </div>
     </div>
-</body>
-
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-@if (session('msg') == 'BADREQUEST')
-<script type="text/javascript">
-    Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'credenciales no validas',
-    })
-</script>
-@endif
-
-@if (session('msg') == 'STATUSFALSE')
-<script type="text/javascript">
-    Swal.fire({
-    icon: 'error',
-    title: 'Oops...',
-    text: 'Usuario deshabilitado ',
-    })
-</script>
-@endif
-
-@if (session('msg') == 'singOut')
-<script type="text/javascript">
-        Swal.fire({
-        position: 'center',
-        icon: 'success',
-        title:'Adios',
-        showConfirmButton: false,
-        timer: 1500
-    })
-</script>
-@endif
-
-
-</html>
+</body> -->

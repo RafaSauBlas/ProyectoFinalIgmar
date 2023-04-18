@@ -46,7 +46,7 @@ class AuthController extends Controller
                 }
                 else
                 {
-                    return redirect('/dashboard')->with('msg','STATUS');
+                    return redirect('/home')->with('msg','STATUS');
                 }
                 }
             }
@@ -64,7 +64,7 @@ class AuthController extends Controller
                 }
                 else
                 {
-                    return redirect('/dashboard')->with('msg','STATUS');
+                    return redirect('/home')->with('msg','STATUS');
                 }
             }
             else
@@ -298,7 +298,7 @@ class AuthController extends Controller
                 $date = Carbon::now();
                 if($date->subminutes(5) <= $code->codigomail_created_at){
                     if(DB::table('codigos_logins')->where('user_id', $code->user_id)->update(['codigomail_verified_at' => Carbon::now()])){
-                        return redirect('/dashboard')->with('msg','STATUS');
+                        return redirect('/home')->with('msg','STATUS');
                     }
                     else{
                         return redirect('/espera')->with('msg','BADREQUEST');
