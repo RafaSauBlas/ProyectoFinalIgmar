@@ -36,6 +36,6 @@ Route::post('logeocodigo', [AuthController::class, 'ValidaCodigo'])->name('logeo
 
 Route::post('validacodigo', [AuthController::class, 'ValidaCodigoUtilidad']);
 
-Route::post('prueba', [AuthController::class, 'enviacodigoutiulidad']);
+Route::post('prueba', [AuthController::class, 'Enlace']);
 
 Route::post('prueba2', [AuthController::class, 'RespondeSolicitud'])->name('respondersolicitud');

@@ -29,7 +29,7 @@
                         <div class="row mb-3">
                         <div class="col-md-3"></div>
                             <div class="col-md-6">
-                               <center><h4 class="mt-6 text-xl text-gray-900 dark:text-white">SU CODIGO PARA {{$utilidad}} ES</h4></center>
+                               <center><h4 class="mt-6 text-xl text-gray-900 dark:text-white">SU CODIGO PARA <b><u>{{$utilidad}}</u></b> ES</h4></center>
                                  <br>
                                 <center><b><h1 class="underline mt-12 text-xl font-bold text-gray-900 dark:text-white" style="font-style: bol;"> <u>{{ $codigo }}</u> </h1></b></center>
                             </div>

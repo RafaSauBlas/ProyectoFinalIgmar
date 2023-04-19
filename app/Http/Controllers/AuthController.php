@@ -212,7 +212,7 @@ class AuthController extends Controller
         }
     }
 
-    Public function GeneraCodigoUtilidad($id, $utilidad)
+    Public function GeneraCodigoUtilidad($ida, $utilidad)
     {
         $codigo = rand(100000, 999999);
         $codigomail = CodigoUtilidad::create([
@@ -220,7 +220,7 @@ class AuthController extends Controller
             'codigo_created_at' => Carbon::now(),
             'codigo_verified_at'  => NULL,
             'funcion' => $utilidad,
-            'user_id' => $id,
+            'user_id' => $ida,
             'user_crea_id' => Auth::user()->id,
         ]);
         
@@ -391,6 +391,10 @@ class AuthController extends Controller
                 return redirect()->back();
             }
         }
+    }
+
+    public function Enlace(Request $request){
+            return $request->ip();
     }
 
 }

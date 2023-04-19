@@ -1,4 +1,70 @@
-<html lang="en">
+
+@extends('layouts.app')
+
+@section('template_title')
+    Disco
+@endsection
+
+@section('content')
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-4"></div>
+            <div class="col-sm-4"><center><h1>Listado de solicitudes</h1></center></div>
+            <div class="col-sm-4"></div>
+        </div>
+        <div class="row"></div>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="card">
+                    @if ($message = Session::get('success'))
+                        <div class="alert alert-success">
+                            <p>{{ $message }}</p>
+                        </div>
+                    @endif
+
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-striped table-hover">
+                                <thead class="thead">
+                                    <tr>
+										<th>SOLICITANTE</th>
+										<th>ACCIÓN</th>
+										<th>FECHA SOLICITA</th>
+										<th>OPCIONES</th>
+
+                                        <th></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach ($solicitudes as $row)
+                                        <tr>
+                                            <td hidden>{{$row->id}} </td>
+											<td>{{ $row->name }}</td>
+											<td>{{ $row->accion }}</td>
+											<td>{{ $row->fechasolicita }}</td>
+
+                                            <td>
+                                              <a class="btn btn-sm btn-success" href="/prueba?id={{$row->id}}&respuesta=acepta&utilidad{{$row->accion}}">
+                                                ACEPTAR
+                                              </a>
+                                              <a class="btn btn-danger btn-sm" href="/prueba?id={{$row->id}}&respuesta=rechaza&utilidad={{$row->accion}}">
+                                                RECHAZAR
+                                              </a>
+                                            </td>
+                                        </tr>
+                                    @endforeach
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+@endsection
+
+<!-- <html lang="en">
 
 <head>
     <meta charset="UTF-8">
@@ -65,21 +131,7 @@
                                           </button>
                                         </a>
                                     </td>
-                                    <!-- <td>
-                                        <div id="myModal2-{{ $row->id }}" class="modal">
-                                            <div class="modal-content">
-                                                <span class="close">&times;</span>
-                                                <img src="/Image/IconEliminar.png" alt="">
-                                                <p class="textModal">Estas seguro de eliminar</p>
-                                                <form method="POST" action="{{ url('collaborators/deleteColl', [$row]) }}">
-                                                    @method('DELETE')
-                                                    @csrf
-                                                    <button class="btns" type="submit">Si</button>
-                                                </form>
 
-                                            </div>
-                                        </div>
-                                    </td> -->
                                 </tr>
                             @endforeach
                         </tbody>
@@ -149,4 +201,4 @@
 </script>
 @endif
 
-</html>
+</html> -->

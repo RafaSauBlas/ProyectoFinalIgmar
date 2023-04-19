@@ -1,9 +1,10 @@
-<?php
+ <?php
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ViewController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Subir;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DiscoController;
 
@@ -19,9 +20,12 @@ use App\Http\Controllers\DiscoController;
 */
 
 
+Route::GET('/upload-image',[Subir::class,'upload']);
 
-
-
+// Route::POST('/upload-image', function () {
+//    request()->file('file')->store('file', 'do');
+//  return back();
+// })->name('welcome');
 
 
 Route::middleware(['logeado'])->group(function () {
@@ -54,6 +58,8 @@ Route::get('/vistas/codigo', function(Request $request){
 
 //auth
 //valid
+//'validaVPN'
+
 Route::post('session',[AuthController::class,'login'])->name('session');
 
 Route::middleware(['valid'])->group(function () {
