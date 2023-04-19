@@ -44,9 +44,7 @@ class DiscoController extends Controller
     public function store(Request $request)
     {
         request()->validate(Disco::$rules);
-
         $disco = Disco::create($request->all());
-
         return redirect()->route('discos.index')
             ->with('success', 'Nuevo disco registrado.');
     }
@@ -92,6 +90,11 @@ class DiscoController extends Controller
 
         return redirect()->route('discos.index')
             ->with('success', 'El disco se actualizó correctamente.');
+    }
+
+    public function EditarDisco(Request $request)
+    {
+        Disco::where('id', $id)->update(['aprobada' => 1,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id]);
     }
 
     /**

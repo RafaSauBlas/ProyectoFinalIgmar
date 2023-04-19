@@ -17,7 +17,7 @@ class Logeo
     public function handle(Request $request, Closure $next)
     {
         if(auth()->check()){
-            return redirect('home');
+            return redirect('/');
         }
         else{
             return redirect('login');

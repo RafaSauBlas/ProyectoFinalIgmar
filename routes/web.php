@@ -7,6 +7,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\Subir;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DiscoController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,11 +28,11 @@ Route::GET('/upload-image',[Subir::class,'upload']);
 //  return back();
 // })->name('welcome');
 
+Route::get('/', function () { 
+    return redirect('/home');
+});
 
 Route::middleware(['logeado'])->group(function () {
-    Route::get('/', function () {
-        return view('Auth.login');
-    });
     Route::get('login',[ViewController::class,'loginView'])->name('login');
 });
 
@@ -63,10 +64,9 @@ Route::get('/vistas/codigo', function(Request $request){
 Route::post('session',[AuthController::class,'login'])->name('session');
 
 Route::middleware(['valid'])->group(function () {
-    Route::resource('discos', App\Http\Controllers\DiscoController::class);
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
     //VIEWS
-    Route::get('dashboard',[ViewController::class,'dashboardView'])->name('dashboardView');
+    //Route::get('dashboard',[ViewController::class,'dashboardView'])->name('dashboardView');
     Route::get('collaborators',[ViewController::class,'collaboratorsView'])->name('collaboratorsView');
     Route::get('profile',[ViewController::class,'profileView'])->name('profileView');
     Route::get('customers',[ViewController::class,'customerView'])->name('customers');
@@ -97,12 +97,24 @@ Route::middleware(['valid'])->group(function () {
         Route::delete('deleteColl/{id}',[AuthController::class,'deleteCollaborator'])->name('deleteCollaborator');
     });
 
+
+    Route::resource('discos', DiscoController::class);
+
     Route::prefix('discos')->group(function () {
+
         Route::put('disco.edit/{id}',[DiscoController::class,'edit'])->name('edit');
+
+
+        
         Route::get('disco.create',[DiscoController::class,'create'])->name('create');
         Route::delete('disco.delete/{id}',[DiscoController::class,'delete'])->name('delete');
         Route::post('disco.store',[DiscoController::class,'store'])->name('store');
     });
+
+
+    //Rutas arregladas de los discos
+    Route::put('disc.editar', [DiscoController::class, 'EditarDisco']);
+
 
 
 
@@ -117,8 +129,9 @@ Route::middleware(['valid'])->group(function () {
         
     });
 
+
+
     //VISTAS DE CODIGOS
-    
     Route::get('/vistas/codigoutilidad', function(Request $request){
         if (! $request->hasValidSignature()) {
             abort(401);
@@ -138,5 +151,8 @@ Route::middleware(['valid'])->group(function () {
     })->name('vsolicitud');
 
 });
+
+
+
 
 Auth::routes();

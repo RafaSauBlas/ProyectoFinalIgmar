@@ -667,6 +667,7 @@ class ComposerStaticInit5e3e3c277f685301eb7e040df142c2ef
         'App\\Http\\Middleware\\TrimStrings' => __DIR__ . '/../..' . '/app/Http/Middleware/TrimStrings.php',
         'App\\Http\\Middleware\\TrustHosts' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustHosts.php',
         'App\\Http\\Middleware\\TrustProxies' => __DIR__ . '/../..' . '/app/Http/Middleware/TrustProxies.php',
+        'App\\Http\\Middleware\\VPN' => __DIR__ . '/../..' . '/app/Http/Middleware/VPN.php',
         'App\\Http\\Middleware\\Validado' => __DIR__ . '/../..' . '/app/Http/Middleware/Validado.php',
         'App\\Http\\Middleware\\VerifyCsrfToken' => __DIR__ . '/../..' . '/app/Http/Middleware/VerifyCsrfToken.php',
         'App\\Mail\\CodigoLogin' => __DIR__ . '/../..' . '/app/Mail/CodigoLogin.php',
