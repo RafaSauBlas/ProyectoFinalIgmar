@@ -102,10 +102,10 @@ Route::middleware(['valid'])->group(function () {
 
     Route::prefix('discos')->group(function () {
 
-        Route::put('disco.edit/{id}',[DiscoController::class,'edit'])->name('edit');
+            Route::put('disco.edit/{id}',[DiscoController::class,'edit'])->name('edit');
 
 
-        
+
         Route::get('disco.create',[DiscoController::class,'create'])->name('create');
         Route::delete('disco.delete/{id}',[DiscoController::class,'delete'])->name('delete');
         Route::post('disco.store',[DiscoController::class,'store'])->name('store');
