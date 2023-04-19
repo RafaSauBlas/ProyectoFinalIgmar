@@ -36,6 +36,7 @@
                             <strong>Precio:</strong>
                             {{ $disco->precio }}
                         </div>
+                        
 
                     </div>
                 </div>

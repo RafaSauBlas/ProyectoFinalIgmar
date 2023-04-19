@@ -40,6 +40,7 @@
 										<th>Categoria</th>
 										<th>Cantante</th>
 										<th>Precio</th>
+										<th>Archivos</th>
 
                                         <th></th>
                                     </tr>
@@ -53,7 +54,7 @@
 											<td>{{ $disco->categoria }}</td>
 											<td>{{ $disco->cantante }}</td>
 											<td>{{ $disco->precio }}</td>
-
+                                            <td>{{ $disco->archivo }}</td>
                                             <td>
                                                 <form action="{{ route('discos.destroy',$disco->id) }}" method="POST">
                                                     <a class="btn btn-sm btn-success" href="{{ route('discos.edit',$disco->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>

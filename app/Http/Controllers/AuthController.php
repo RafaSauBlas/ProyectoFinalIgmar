@@ -46,7 +46,7 @@ class AuthController extends Controller
                 }
                 else
                 {
-                    return redirect('/home')->with('msg','STATUS');
+                    return redirect('/discos')->with('msg','STATUS');
                 }
                 }
             }
