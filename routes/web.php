@@ -32,9 +32,9 @@ Route::get('/', function () {
     return redirect('/home');
 });
 
-Route::middleware(['logeado'])->group(function () {
+//Route::middleware(['logeado'])->group(function () {
     Route::get('login',[ViewController::class,'loginView'])->name('login');
-});
+//});
 
 //ruta de iniciar sesion
 
