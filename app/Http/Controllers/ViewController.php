@@ -15,7 +15,7 @@ class ViewController extends Controller
 {
     public function loginView()
     {
-        return view('Auth.login');
+        return view('Auth.Login');
     }
 
     public function dashboardView()

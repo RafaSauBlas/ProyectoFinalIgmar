@@ -20,7 +20,7 @@ class Logeo
             return redirect('/');
         }
         else{
-            return redirect('login');
+            return redirect('/');
         }
     }
 }
