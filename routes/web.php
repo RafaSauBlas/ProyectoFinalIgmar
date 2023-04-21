@@ -8,6 +8,7 @@ use App\Http\Controllers\Subir;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DiscoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QR;
 
 /*
 |--------------------------------------------------------------------------
@@ -149,6 +150,8 @@ Route::middleware(['valid'])->group(function () {
             return view('Otros.solicitud')->withUsername($request->username)->withUtilidad($request->utilidad);
         }
     })->name('vsolicitud');
+
+    Route::get('/qr',[QR::class,'index']);
 
 });
 
