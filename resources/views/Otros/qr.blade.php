@@ -31,7 +31,7 @@
                         <div class="col-md-3"></div>
                             <div class="col-md-6">
                                <div class="visible-print text-center">
-                                   {!! QrCode::size(250)->generate(Request::url()); !!}
+                                   {!! QrCode::size(250)->generate("$codigo"); !!}
                                </div>
                             </div>
                         </div>

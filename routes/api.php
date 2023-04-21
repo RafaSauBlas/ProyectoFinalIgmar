@@ -4,6 +4,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\QR;
 
 /*
 |--------------------------------------------------------------------------
@@ -36,6 +37,6 @@ Route::post('logeocodigo', [AuthController::class, 'ValidaCodigo'])->name('logeo
 
 Route::post('validacodigo', [AuthController::class, 'ValidaCodigoUtilidad']);
 
-Route::post('prueba', [AuthController::class, 'Enlace']);
+Route::post('validaqr', [QR::class,'ValidaQR']);
 
 Route::post('prueba2', [AuthController::class, 'RespondeSolicitud'])->name('respondersolicitud');
