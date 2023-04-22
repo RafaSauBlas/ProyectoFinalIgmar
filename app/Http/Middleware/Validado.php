@@ -6,6 +6,7 @@ use Closure;
 use Illuminate\Http\Request;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Support\Facades\DB;
+use Carbon\Carbon;
 
 class Validado
 {
@@ -19,7 +20,9 @@ class Validado
     public function handle($request, Closure $next)
     {
         $valido = true;
-        $codigos = DB::table('codigos_logins')->select('codigomail', 'codigomail_verified_at')->get();
+        $date = Carbon::now();
+
+        $codigos = DB::table('codigos_logins')->where('codigomail_created_at', '>=', $date->subminutes(1))->select('codigomail', 'codigomail_created_at', 'codigomail_verified_at')->get();
         foreach($codigos as $code){
             if($code->codigomail_verified_at == NULL){
                 $valido = false;
@@ -27,12 +30,39 @@ class Validado
             }
         }
 
+        $valido2 = true;
+
+        $codigosqr = DB::table('q_r_s')->where('codigoqr_created_at', '>=', $date->subminutes(1))->select('codigoqr', 'codigoqr_created_at', 'codigoqr_verified_at')->get();
+        
+        foreach($codigosqr as $codes){
+            if($codes->codigoqr_verified_at == NULL){
+                $valido2 = false;
+                break;        
+            }
+        }
+
         if(auth()->check()){
             if($valido != false || auth()->user()->area == 1){
-                return $next($request);
+                if(auth()->user()->area == 3){
+                    if($valido2 != false){
+                        return $next($request);    
+                    }
+                    else{
+                        return redirect('/qr');
+                    }
+                }
+                else{
+                    return $next($request);
+                }
+
             }
             elseif(auth()->check()){
-                return redirect()->intended(RouteServiceProvider::CODIGO);
+                if(auth()->user()->area == 2){
+                    return redirect()->intended(RouteServiceProvider::CODIGO);
+                }
+                else{
+                    return redirect('/');
+                }
             }
             else{
                 //return $next($request);

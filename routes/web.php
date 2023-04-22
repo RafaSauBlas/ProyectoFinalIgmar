@@ -8,6 +8,7 @@ use App\Http\Controllers\Subir;
 use Illuminate\Http\Request;
 use App\Http\Controllers\DiscoController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\QR;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,6 +63,8 @@ Route::get('/vistas/codigo', function(Request $request){
 //'validaVPN'
 
 Route::post('session',[AuthController::class,'login'])->name('session');
+//Mostrar QR
+Route::get('/qr',[QR::class,'index']);
 
 Route::middleware(['valid'])->group(function () {
     Route::get('/home', [HomeController::class, 'index'])->name('home');
@@ -149,7 +152,6 @@ Route::middleware(['valid'])->group(function () {
             return view('Otros.solicitud')->withUsername($request->username)->withUtilidad($request->utilidad);
         }
     })->name('vsolicitud');
-
 });
 
 
