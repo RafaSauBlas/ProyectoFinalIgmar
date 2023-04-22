@@ -10686,7 +10686,6 @@
     "aliases": [],
     "minimum-stability": "dev",
     "stability-flags": {
-        "beyondcode/laravel-websockets": 10,
         "tymon/jwt-auth": 20
     },
     "prefer-stable": true,

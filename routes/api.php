@@ -24,6 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('auth')->group(function () {
     Route::post('/loginApp',[AuthController::class,'authApp']);
 });
+Route::get('/message',[DiscoController::class,'mensaje']);
 
 Route::post('/registrar', [AuthController::class, 'signUp']);
 

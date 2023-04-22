@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Disco;
 use Illuminate\Http\Request;
-
+use App\Events\NewMessage;
 /**
  * Class DiscoController
  * @package App\Http\Controllers
@@ -128,4 +128,12 @@ class DiscoController extends Controller
         return redirect()->route('discos.index')
             ->with('success', 'El disco se eliminó correctamente.');
     }
+
+    public function mensaje()
+    {
+        event(new NewMessage('hello world'));
+
+        return response()->json(['message'=>'evento enviado']);
+    }
+
 }
