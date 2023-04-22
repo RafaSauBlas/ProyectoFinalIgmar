@@ -20,6 +20,7 @@ return new class extends Migration
             $table->string('cantante');
             $table->decimal('precio',10,2);
             $table->string('archivo');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

@@ -102,14 +102,12 @@ Route::middleware(['valid'])->group(function () {
     Route::resource('discos', DiscoController::class);
 
     Route::prefix('discos')->group(function () {
-
-            Route::put('disco.edit/{id}',[DiscoController::class,'edit'])->name('edit');
-
-
-
-        Route::get('disco.create',[DiscoController::class,'create'])->name('create');
-        Route::delete('disco.delete/{id}',[DiscoController::class,'delete'])->name('delete');
-        Route::post('disco.store',[DiscoController::class,'store'])->name('store');
+        Route::get('edit/{id}',[DiscoController::class,'edit'])->name('edit');
+        Route::put('update/{id}',[DiscoController::class,'update'])->name('update');
+        Route::get('delete/{id}',[DiscoController::class,'delete'])->name('delete');
+        Route::delete('eliminar/{id}',[DiscoController::class,'eliminarDisco'])->name('eliminarDisco');
+        Route::get('create',[DiscoController::class,'create'])->name('create');
+        Route::post('store',[DiscoController::class,'store'])->name('store');
     });
 
 

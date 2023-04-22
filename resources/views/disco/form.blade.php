@@ -1,4 +1,35 @@
-<div class="box box-info padding-1">
+<!-- <div class="box box-info padding-1">
+    <div class="box-body"> 
+        <form method="POST" action="{{ route('edit', $disco->id) }}" enctype="multipart/form-data">
+            @csrf
+            @method('GET')
+            <label for="nombre">
+                Nombre
+            </label>
+            <input type="text" name="nombre" id="nombre">
+            <label for="categoria">
+                Categoria
+            </label>
+            <input type="text" name="categoria" id="categoria">
+            <label for="cantante">
+                Cantante
+            </label>
+            <input type="text" name="cantante" id="cantante">
+            <label for="precio">
+                Precio
+            </label>
+            <input type="text" name="precio" id="precio">
+            <label for="archivo">
+                Archivo
+            </label>
+            <input type="file" name="archivo" id="archivo">
+        <div class="box-footer mt20">
+            <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
+        </div>
+        </form>
+    </div>
+</div> -->
+<!-- <div class="box box-info padding-1">
     <div class="box-body"> 
         <div class="form-group">
             {{ Form::label('nombre') }}
@@ -31,4 +62,4 @@
     <div class="box-footer mt20">
         <button type="submit" class="btn btn-primary">{{ __('Submit') }}</button>
     </div>
-</div>
+</div> -->

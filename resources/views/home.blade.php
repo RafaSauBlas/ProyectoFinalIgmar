@@ -13,7 +13,7 @@
                             </span>
 
                              <div class="float-right">
-                                <a href="{{ route('discos.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
+                                <a href="{{ route('create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
                                   {{ __('Agregar nuevo') }}
                                 </a>
                               </div>
@@ -47,11 +47,15 @@
 											<td>{{ $disco->precio }}</td>
 
                                             <td>
-                                                <form action="{{ route('discos.destroy',$disco->id) }}" method="POST">
-                                                    <a class="btn btn-sm btn-success" href="{{ route('discos.edit',$disco->id) }}"><i class="fa fa-fw fa-edit"></i> {{ __('Editar') }}</a>
+                                                <form action="{{ route('edit',$disco->id) }}" method="GET">
                                                     @csrf
-                                                    @method('destroy')
-                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i> {{ __('Eliminar') }}</button>
+                                                    @method('GET')
+                                                    <button class="btn btn-sm btn-success" type="submit"><i class="fa fa-fw fa-edit"></i>Editar</button>
+                                                </form>
+                                                <form action="{{ route('delete',$disco->id)}}" method="GET">
+                                                    @csrf
+                                                    @method('GET')
+                                                    <button type="submit" class="btn btn-danger btn-sm"><i class="fa fa-fw fa-trash"></i>Eliminar</button>
                                                 </form>
                                             </td>
                                         </tr>

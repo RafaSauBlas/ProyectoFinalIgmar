@@ -18,6 +18,7 @@ class DiscoController extends Controller
      */
     public function index()
     {
+        $discos = Disco::withTrashed()->get();
         $discos = Disco::paginate();
 
         return view('disco.index', compact('discos'))
@@ -58,7 +59,7 @@ class DiscoController extends Controller
     public function show($id)
     {
         $disco = Disco::find($id);
-
+        $discos = Disco::withTrashed()->get();
         return view('disco.show', compact('disco'));
     }
 
@@ -74,7 +75,6 @@ class DiscoController extends Controller
 
         return view('disco.edit', compact('disco'));
     }
-
     /**
      * Update the specified resource in storage.
      *
@@ -82,11 +82,24 @@ class DiscoController extends Controller
      * @param  Disco $disco
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Disco $disco)
+    public function update(Request $request, $id)
     {
-        request()->validate(Disco::$rules);
-
-        $disco->update($request->all());
+        // request()->validate(Disco::$rules);
+        
+        $disco = Disco::findOrFail($id);
+        $disco->nombre = $request->nombre;
+        $disco->cantante = $request->cantante;
+        $disco->categoria = $request->categoria;
+        $disco->precio = $request->precio;
+        if ($request->hasFile('archivo')) {
+        $file = $request->file('archivo');
+        $path = $file->store('your/desired/path', 'public');
+        $disco->archivo = $path;
+        }else{
+            $disco->archivo = $disco->archivo;
+        }
+        
+        $disco->save();
 
         return redirect()->route('discos.index')
             ->with('success', 'El disco se actualizó correctamente.');
@@ -102,12 +115,17 @@ class DiscoController extends Controller
      * @return \Illuminate\Http\RedirectResponse
      * @throws \Exception
      */
-    public function destroy($id)
+    public function delete($id)
     {
-        $disco = Disco::find($id)->delete();
+        $disco = Disco::find($id);
         return view('disco.delete', compact('disco'));
-        
+    }
+
+    public function eliminarDisco($id){
+        $disco = Disco::findOrFail($id);
+        $disco->delete();
+
         return redirect()->route('discos.index')
-            ->with('success', 'Disco eliminado correctamente');
+            ->with('success', 'El disco se eliminó correctamente.');
     }
 }

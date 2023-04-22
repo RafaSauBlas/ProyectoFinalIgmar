@@ -13,9 +13,6 @@
                         <div class="float-left">
                             <span class="card-title">{{ __('Show') }} Disco</span>
                         </div>
-                        <div class="float-right">
-                            <a class="btn btn-primary" href="{{ route('discos.index') }}"> {{ __('Back') }}</a>
-                        </div>
                     </div>
 
                     <div class="card-body">
@@ -36,6 +33,11 @@
                             <strong>Precio:</strong>
                             {{ $disco->precio }}
                         </div>
+                        <form method="POST" action="{{ route('eliminarDisco',$disco->id) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-primary">Eliminar Disco</button>
+                        </form>
                     </div>
                 </div>
             </div>

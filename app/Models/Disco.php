@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-
+use Illuminate\Database\Eloquent\SoftDeletes;
 /**
  * Class Disco
  *
@@ -20,12 +20,14 @@ use Illuminate\Database\Eloquent\Model;
  */
 class Disco extends Model
 {
-    
+    use SoftDeletes;
+
     static $rules = [
 		'nombre' => 'required',
 		'categoria' => 'required',
 		'cantante' => 'required',
 		'precio' => 'required',
+    'archivo' => 'required',
     ];
 
     protected $perPage = 20;
@@ -35,7 +37,7 @@ class Disco extends Model
      *
      * @var array
      */
-    protected $fillable = ['nombre','categoria','cantante','precio'];
+    protected $fillable = ['nombre','categoria','cantante','precio','archivo'];
 
 
 

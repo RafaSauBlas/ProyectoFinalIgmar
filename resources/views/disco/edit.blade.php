@@ -16,12 +16,34 @@
                         <span class="card-title">{{ __('Update') }} Disco</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ route('discos.update', $disco->id) }}"  role="form" enctype="multipart/form-data">
-                            {{ method_field('PATCH') }}
+                        <form method="POST" action="{{ route('discos.update', $disco->id) }}"  enctype="multipart/form-data">
                             @csrf
-
-                            @include('disco.form')
-
+                            @method('PUT')
+                            <div class="box box-info padding-1">
+                                <div class="box-body"> 
+                                        <label for="nombre">
+                                            Nombre
+                                        </label>
+                                        <input type="text" value="{{$disco->nombre}}" name="nombre" id="nombre">
+                                        <label for="categoria">
+                                            Categoria
+                                        </label>
+                                        <input type="text" value="{{$disco->categoria}}" name="categoria" id="categoria">
+                                        <label for="cantante">
+                                            Cantante
+                                        </label>
+                                        <input type="text" value="{{$disco->cantante}}" name="cantante" id="cantante">
+                                        <label for="precio">
+                                            Precio
+                                        </label>
+                                        <input type="text" value="{{$disco->precio}}" name="precio" id="precio">
+                                        <label for="archivo">
+                                            Archivo
+                                        </label>
+                                        <input type="file" value="{{$disco->archivo}}" name="archivo" id="archivo">
+                                        <button type="submit" class="btn btn-primary">Actualizar</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>

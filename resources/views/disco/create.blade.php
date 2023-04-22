@@ -16,11 +16,34 @@
                         <span class="card-title">{{ __('Ingresar nuevo') }} disco</span>
                     </div>
                     <div class="card-body">
-                        <form method="POST" action="{{ url('discos.store') }}"  role="form" enctype="multipart/form-data">
+                        <form method="POST" action="{{ route('store') }}"  role="form" enctype="multipart/form-data">
                             @csrf
-
-                            @include('disco.form')
-
+                            @method('POST')
+                            <div class="box box-info padding-1">
+                                <div class="box-body"> 
+                                        <label for="nombre">
+                                            Nombre
+                                        </label>
+                                        <input type="text" value="{{$disco->nombre}}" name="nombre" id="nombre">
+                                        <label for="categoria">
+                                            Categoria
+                                        </label>
+                                        <input type="text" value="{{$disco->categoria}}" name="categoria" id="categoria">
+                                        <label for="cantante">
+                                            Cantante
+                                        </label>
+                                        <input type="text" value="{{$disco->cantante}}" name="cantante" id="cantante">
+                                        <label for="precio">
+                                            Precio
+                                        </label>
+                                        <input type="text" value="{{$disco->precio}}" name="precio" id="precio">
+                                        <label for="archivo">
+                                            Archivo
+                                        </label>
+                                        <input type="file" value="{{$disco->archivo}}" name="archivo" id="archivo">
+                                        <button type="submit" class="btn btn-primary">Agregar</button>
+                                </div>
+                            </div>
                         </form>
                     </div>
                 </div>
