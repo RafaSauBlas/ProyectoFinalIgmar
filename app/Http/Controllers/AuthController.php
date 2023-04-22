@@ -298,7 +298,13 @@ class AuthController extends Controller
                 $date = Carbon::now();
                 if($date->subminutes(5) <= $code->codigomail_created_at){
                     if(DB::table('codigos_logins')->where('user_id', $code->user_id)->update(['codigomail_verified_at' => Carbon::now()])){
-                        return redirect('/home')->with('msg','STATUS');
+                        $usuario = DB::table('users')->where('id', $code->user_id)->select('id', 'email', 'area')->first();
+                        if($usuario->area == 3){
+                            return redirect('/qr');
+                        }
+                        else{
+                            return redirect('/home')->with('msg','STATUS');
+                        }
                     }
                     else{
                         return redirect('/espera')->with('msg','BADREQUEST');
