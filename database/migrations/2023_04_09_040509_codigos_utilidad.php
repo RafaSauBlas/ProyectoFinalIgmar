@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('codigo')->nullable();
             $table->timestamp('codigo_created_at')->nullable();
             $table->timestamp('codigo_verified_at')->nullable();
-            $table->integer('funcion')->nullable();
+            $table->string('funcion')->nullable();
             $table->integer('user_id')->nullable();
             $table->integer('user_crea_id')->nullable();
         });

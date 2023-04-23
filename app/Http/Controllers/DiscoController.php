@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Disco;
 use Illuminate\Http\Request;
 use App\Events\NewMessage;
+use Carbon\Carbon;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
 /**
  * Class DiscoController
  * @package App\Http\Controllers
@@ -16,6 +20,38 @@ class DiscoController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     Public function ValidaCodigoUtilidad($codigoS){
+        $cod = $codigoS;
+        $codigos = DB::table('codigo_utilidads')->select('codigo', 'codigo_created_at', 'user_id')->get();
+        
+        foreach($codigos as $code){
+            if(Hash::check($cod, $code->codigo)){
+                $date = Carbon::now();
+                if($code->user_id != Auth::user()->id){
+                    return redirect()->back()->with('msg', 'OTROUSU');
+                }
+                else{
+                    if($date->subminutes(5) <= $code->codigo_created_at){
+                        if(DB::table('codigo_utilidads')->where('user_id', $code->user_id)->where('codigo', $code->codigo)->update(['codigo_verified_at' => Carbon::now()])){
+                            return true;
+                        }
+                        else{
+                            return false;
+                        }
+                    }
+                    else{
+                        return back()->with('msg', 'CADUCADO');
+                    }
+                }
+            }
+        }
+    }
+
+
+
+
+
     public function index()
     {
         $discos = Disco::withTrashed()->get();
@@ -85,24 +121,53 @@ class DiscoController extends Controller
     public function update(Request $request, $id)
     {
         // request()->validate(Disco::$rules);
-        
-        $disco = Disco::findOrFail($id);
-        $disco->nombre = $request->nombre;
-        $disco->cantante = $request->cantante;
-        $disco->categoria = $request->categoria;
-        $disco->precio = $request->precio;
-        if ($request->hasFile('archivo')) {
-        $file = $request->file('archivo');
-        $path = $file->store('your/desired/path', 'public');
-        $disco->archivo = $path;
-        }else{
-            $disco->archivo = $disco->archivo;
-        }
-        
-        $disco->save();
+       if(Auth::user()->area < 2){
+          $codigoS = $request->codigoS;
 
-        return redirect()->route('discos.index')
-            ->with('success', 'El disco se actualizó correctamente.');
+          if(self::ValidaCodigoUtilidad($codigoS) === true){
+             $disco = Disco::findOrFail($id);
+             $disco->nombre = $request->nombre;
+             $disco->cantante = $request->cantante;
+             $disco->categoria = $request->categoria;
+             $disco->precio = $request->precio;
+             if ($request->hasFile('archivo')) {
+                $file = $request->file('archivo');
+                $path = $file->store('your/desired/path', 'public');
+                $disco->archivo = $path;
+             }else{
+               $disco->archivo = $disco->archivo;
+             }
+
+             $disco->save();
+
+             return redirect()->route('discos.index')
+                    ->with('success', 'El disco se actualizó correctamente.');
+          }
+          else{
+             return back()->with('msg', 'NOVALIDO');
+          }
+       }
+       else{
+          $disco = Disco::findOrFail($id);
+          $disco->nombre = $request->nombre;
+          $disco->cantante = $request->cantante;
+          $disco->categoria = $request->categoria;
+          $disco->precio = $request->precio;
+          if($request->hasFile('archivo')) {
+             $file = $request->file('archivo');
+             $path = $file->store('your/desired/path', 'public');
+             $disco->archivo = $path;
+          }
+          else{
+             $disco->archivo = $disco->archivo;
+          }
+                
+          $disco->save();
+        
+          return redirect()->route('discos.index')
+                 ->with('success', 'El disco se actualizó correctamente.');
+        
+       }
     }
 
     public function EditarDisco(Request $request)
@@ -121,12 +186,30 @@ class DiscoController extends Controller
         return view('disco.delete', compact('disco'));
     }
 
-    public function eliminarDisco($id){
-        $disco = Disco::findOrFail($id);
-        $disco->delete();
+    public function eliminarDisco($id, Request $request){
 
-        return redirect()->route('discos.index')
-            ->with('success', 'El disco se eliminó correctamente.');
+        if(Auth::user()->area < 2){
+            $codigoS = $request->codigoS;
+  
+            if(self::ValidaCodigoUtilidad($codigoS) === true){
+                $disco = Disco::findOrFail($id);
+                $disco->delete();
+
+                return redirect()->route('discos.index')
+                       ->with('success', 'El disco se eliminó correctamente.');
+            }
+            else{
+               return back()->with('msg', 'NOVALIDO');
+            }
+         }
+         else{
+            $disco = Disco::findOrFail($id);
+           $disco->delete();
+
+           return redirect()->route('discos.index')
+                  ->with('success', 'El disco se eliminó correctamente.');
+         }
+
     }
 
     public function mensaje()

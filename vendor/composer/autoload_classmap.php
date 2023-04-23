@@ -30,6 +30,7 @@ return array(
     'AWS\\CRT\\OptionValue' => $vendorDir . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
     'AWS\\CRT\\Options' => $vendorDir . '/aws/aws-crt-php/src/AWS/CRT/Options.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
+    'App\\Events\\NewMessage' => $baseDir . '/app/Events/NewMessage.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
     'App\\Http\\Controllers\\AddressController' => $baseDir . '/app/Http/Controllers/AddressController.php',
     'App\\Http\\Controllers\\ArticleController' => $baseDir . '/app/Http/Controllers/ArticleController.php',

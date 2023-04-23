@@ -82,7 +82,7 @@ Route::middleware(['valid'])->group(function () {
   
     Route::get('prueba',[AuthController::class,'RespondeSolicitud'])->name('prueba');
 
-    Route::post('solicitud', [AuthController::class, 'GeneraSolicitud'])->name('solicitud');
+    Route::get('solicitud', [AuthController::class, 'GeneraSolicitud'])->name('solicitud');
 
     Route::prefix('users')->group(function () {
         //registrar colaboradores

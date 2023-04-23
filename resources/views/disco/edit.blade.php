@@ -41,6 +41,16 @@
                                             Archivo
                                         </label>
                                         <input type="file" value="{{$disco->archivo}}" name="archivo" id="archivo">
+
+
+                                        @if (Auth::user()->area == 1)
+                                           <label for="archivo">
+                                              Codigo De seguridad
+                                           </label>
+                                           <input type="hidden" value="ELIMINAR" name="accion" codigo="accion">
+                                           <input type="number" value="" name="codigoS" id="codigoS" required>
+                                           <a href="/solicitud?accion=EDITAR"> Solicitar codigo de utilidad... </a>
+                                        @endif
                                         <button type="submit" class="btn btn-primary">Actualizar</button>
                                 </div>
                             </div>
@@ -50,4 +60,55 @@
             </div>
         </div>
     </section>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('msg') == 'OK')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'success',
+            title: 'Solicitud enviada, espera la respuesta de su administrador.',
+            showConfirmButton: false,
+            timer: 1500
+        })
+    </script>
+@endif
+
+@if (session('msg') == 'OTROUSU')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Parece que estas intentado usar un codigo que no te pertenece, si necesitas un codigo solicita uno a tu administrador.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
+@endif
+
+@if (session('msg') == 'CADUCADO')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Este codigo ya expiró, solicita otro codigo e intenta nuevamente.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
+@endif
+
+@if (session('msg') == 'NOVALIDO')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'El codigo que ingresó no es valido, por favor valide el dato e intentelo nuevamente.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
+@endif
+
 @endsection

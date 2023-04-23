@@ -48,7 +48,6 @@
                                     @foreach ($discos as $disco)
                                         <tr>
                                             <td>{{ ++$i }}</td>
-                                            
 											<td>{{ $disco->nombre }}</td>
 											<td>{{ $disco->categoria }}</td>
 											<td>{{ $disco->cantante }}</td>

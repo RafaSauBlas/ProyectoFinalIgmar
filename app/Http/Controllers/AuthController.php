@@ -33,30 +33,31 @@ class AuthController extends Controller
         $credentials = $request->only('email','password');
         $user = User::where('email','=',$request->email)->first();
 
-        if($user->status_password == false)
-        {
-            if(Auth::attempt($credentials)){
-                if($user->area >= 2){
-                    return self::Redireccion($user);
-                }
-                else{
-                    if($user->status == false)
-                {
-                    return redirect('/login')->with('msg','STATUSFALSE');
-                }
-                else
-                {
-                    return redirect('/home')->with('msg','STATUS');
-                }
-                }
-            }
-            else
-            {
-                return redirect('/login')->with('msg','BADREQUEST');
-            }
-        }
-        else
-        {
+        if($user != NULL){
+          if($user->status_password == false)
+          {
+             if(Auth::attempt($credentials)){
+                 if($user->area >= 2){
+                     return self::Redireccion($user);
+                 }
+                 else{
+                     if($user->status == false)
+                 {
+                     return redirect('/login')->with('msg','STATUSFALSE');
+                 }
+                 else
+                 {
+                     return redirect('/home')->with('msg','STATUS');
+                 }
+                 }
+             }
+             else
+             {
+                 return redirect('/login')->with('msg','BADREQUEST');
+             }
+          }
+          else
+          {
             if(Auth::attempt($credentials)){
                 if($user->status == false)
                 {
@@ -71,8 +72,11 @@ class AuthController extends Controller
             {
                 return redirect('/login')->with('msg','BADREQUEST');
             }
+          }
         }
-
+        else{
+            return back()->with('msg', 'NO');
+        }
     }
 
     public function signUp(Request $request)
@@ -240,18 +244,11 @@ class AuthController extends Controller
             'usuario_id' => Auth::user()->id,
             'accion' => $accion,
             'fechasolicita' => Carbon::now(),
-            'aprobada' => NULL,
+            'aprobada' => 0,
             'fechaaprueba' => NULL,
             'usuario_autoriza'=> NULL,
         ]);
-        
-        if($codigomail)
-        {
-            return $codigo;
-        }
-        else{
-            return false;
-        }
+        return back()->with('msg', 'OK');
     }
 
     public function enviacodigo($mail, $codigo){
@@ -389,12 +386,13 @@ class AuthController extends Controller
         $usuario = User::find($solicitud->usuario_id);
         if($respuesta  == 'acepta'){
             if(Peticiones::where('id', $id)->update(['aprobada' => 1,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id])){
-                return self::SendCodigoUtilidad($usuario->name, $utilidad);
+                self::SendCodigoUtilidad($usuario->name, $utilidad);
+                return back()->with('msg', 'OK');
             }
         }
         else{
-            if(Peticiones::where('id', $id)->update(['aprobada' => 1,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id])){
-                return redirect()->back();
+            if(Peticiones::where('id', $id)->update(['aprobada' => 2,'fechaaprueba' => Carbon::now(), 'usuario_autoriza' => Auth::user()->id])){
+                return back()->with('msg', 'OK');
             }
         }
     }

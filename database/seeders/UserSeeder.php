@@ -16,7 +16,7 @@ class UserSeeder extends Seeder
     public function run()
     {
         $user = User::create([
-            'name' => 'Arturo',
+            'name' => 'Administrador',
             'lastname' => 'De la O',
             'branchoffice' => 'Torreón',
             'email' => 'Addccelerator@hotmail.com',
@@ -25,7 +25,7 @@ class UserSeeder extends Seeder
         ]);
         
         $user = User::create([
-            'name' => 'Carlos',
+            'name' => 'Supervisor',
             'lastname' => 'Slim Saucedo',
             'branchoffice' => 'Torreón',
             'email' => 'RafaSauBlas@hotmail.com',
@@ -34,10 +34,10 @@ class UserSeeder extends Seeder
         ]);
 
         $user = User::create([
-            'name' => 'admin',
+            'name' => 'Mortal',
             'lastname' => 'Saucedo',
             'branchoffice' => 'Torreón',
-            'email' => 'admin@hotmail.com',
+            'email' => 'mortal@hotmail.com',
             'password' => bcrypt('admin'),
             'area' => 1
         ]);

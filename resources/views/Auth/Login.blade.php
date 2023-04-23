@@ -67,9 +67,24 @@
         </div>
     </div>
 </div>
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+@if (session('msg') == 'NO')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Correo o contraseña incorrectas, intentelo nuevamente.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
+@endif
+
 @endsection
 
-<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+
 
 <script>
         Pusher.logToConsole = true;
