@@ -40,7 +40,7 @@
                                         <label for="archivo">
                                             Archivo
                                         </label>
-                                        <input type="file" value="{{$disco->archivo}}" name="archivo" id="archivo">
+                                        <input type="file" value="{{$disco->archivo}}" name="image" id="image">
 
 
                                         @if (Auth::user()->area == 1)

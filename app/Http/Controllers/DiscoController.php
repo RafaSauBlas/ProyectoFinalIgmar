@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
+use Storage;
 /**
  * Class DiscoController
  * @package App\Http\Controllers
@@ -121,6 +122,9 @@ class DiscoController extends Controller
     public function update(Request $request, $id)
     {
         // request()->validate(Disco::$rules);
+
+
+
        if(Auth::user()->area < 2){
           $codigoS = $request->codigoS;
 
@@ -130,13 +134,14 @@ class DiscoController extends Controller
              $disco->cantante = $request->cantante;
              $disco->categoria = $request->categoria;
              $disco->precio = $request->precio;
-             if ($request->hasFile('archivo')) {
-                $file = $request->file('archivo');
-                $path = $file->store('your/desired/path', 'public');
-                $disco->archivo = $path;
-             }else{
-               $disco->archivo = $disco->archivo;
-             }
+             $disco->archivo = self::guardaImagen($request);
+            //  if ($request->hasFile('archivo')) {
+            //     $file = $request->file('archivo');
+            //     $path = $file->store('your/desired/path', 'public');
+            //     $disco->archivo = $path;
+            //  }else{
+            //    $disco->archivo = $disco->archivo;
+            //  }
 
              $disco->save();
 
@@ -153,14 +158,15 @@ class DiscoController extends Controller
           $disco->cantante = $request->cantante;
           $disco->categoria = $request->categoria;
           $disco->precio = $request->precio;
-          if($request->hasFile('archivo')) {
-             $file = $request->file('archivo');
-             $path = $file->store('your/desired/path', 'public');
-             $disco->archivo = $path;
-          }
-          else{
-             $disco->archivo = $disco->archivo;
-          }
+          $disco->archivo = self::guardaImagen($request);
+        //   if($request->hasFile('archivo')) {
+        //      $file = $request->file('archivo');
+        //      $path = $file->store('your/desired/path', 'public');
+        //      $disco->archivo = $path;
+        //   }
+        //   else{
+        //      $disco->archivo = $disco->archivo;
+        //   }
                 
           $disco->save();
         
@@ -217,6 +223,36 @@ class DiscoController extends Controller
         event(new NewMessage('hello world'));
 
         return response()->json(['message'=>'evento enviado']);
+    }
+
+
+    public function guardaImagen(Request $request)
+    {
+       $image = $request->file('image');
+
+       if($image) {
+         $filename = time() . '_' . $image->getClientOriginalName();
+
+         Storage::disk('do')->put('/proyecto/portadas/'.$filename,file_get_contents($request->file('image')->getRealPath()),'public');
+
+         $url = Storage::disk('do')->url('/proyecto/portadas/'.$filename);
+         return $url;
+       }
+    }
+
+    public function Eliseo(Request $request){
+        $suma = $request->codigo;
+        // $codigo = $request->codigo;
+        // if($codigo === 250513){
+        //     return "HOLA MUNDO";
+        // }
+        // else{
+        //     return "Adios Mundo";
+        // }
+        $gansito = $request->gansito;
+        $codigo = $request->codigo;
+        return response()
+            ->json(['gansito' => $gansito, 'codigo' => $codigo]);
     }
 
 }

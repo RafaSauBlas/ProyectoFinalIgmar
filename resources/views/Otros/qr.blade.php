@@ -44,6 +44,26 @@
         </div>
     </div>
 </div>
+
+<script src="https://js.pusher.com/7.2/pusher.min.js"></script>
+
+<script>
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('44285c892edabb7d1cdf', {
+        cluster: 'us2'
+        });
+
+        var channel = pusher.subscribe('home');
+        channel.bind('my-event', function(data) {
+        let message = JSON.stringify(data);
+
+        window.location.href = "{{route('home')}}";
+        
+        });
+
+</script>
+
 @endsection
 <!-- <!DOCTYPE html>
 <html lang="en">

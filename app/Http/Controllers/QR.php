@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use App\Events\NewMessage;
 
 class QR extends Controller
 {
@@ -48,9 +49,6 @@ class QR extends Controller
 
 
     Public function ValidaQR(Request $request){
-        $request->validate([
-            'codigo' => 'required|numeric',
-        ]);
         $cod = $request->codigo;
         $codigos = DB::table('q_r_s')->select('codigoqr', 'codigoqr_created_at', 'user_id')->get();
         foreach($codigos as $code){
@@ -58,7 +56,9 @@ class QR extends Controller
                  $date = Carbon::now();
                  if($date->subminutes(5) <= $code->codigoqr_created_at){
                      if(DB::table('q_r_s')->where('codigoqr', $code->codigoqr)->update(['codigoqr_verified_at' => Carbon::now()])){
-                        return redirect('/home')->with('msg','STATUS');
+                        event(new NewMessage('Bienvenido Usuario'));
+                        return response()
+                        ->json(['respuesta' => "Escaneo completado, ahora puede cerrar la APP."]);
                      }
                      else{
                         return redirect('/qr');

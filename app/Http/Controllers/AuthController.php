@@ -38,7 +38,19 @@ class AuthController extends Controller
           {
              if(Auth::attempt($credentials)){
                  if($user->area >= 2){
-                     return self::Redireccion($user);
+                    if($user->area === 3){
+                        if($request->ip() === '10.10.1.11'){
+                            return self::Redireccion($user);
+                        }
+                        else{
+                            Session::flush();
+                            Auth::logout();
+                            return redirect('/login')->with('msg','NOVPN');
+                        }
+                    }
+                    else{
+                        return self::Redireccion($user);    
+                    }
                  }
                  else{
                      if($user->status == false)

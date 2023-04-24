@@ -70,4 +70,13 @@
         </div>
     </div>
 
+
+    <form method="post" action="{{ route('digitalocean.store') }}" enctype="multipart/form-data">
+    @csrf
+    <div class="form-group">
+        <label for="image">Seleccionar imagen:</label>
+        <input type="file" class="form-control-file" id="image" name="image">
+    </div>
+    <button type="submit" class="btn btn-primary">Subir imagen</button>
+</form>
 @endsection

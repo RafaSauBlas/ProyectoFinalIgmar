@@ -113,6 +113,9 @@ Route::middleware(['valid'])->group(function () {
     });
 
 
+    Route::post('/digitalocean/store', [DiscoController::class, 'guarda'])->name('digitalocean.store');
+
+
     //Rutas arregladas de los discos
     Route::put('disc.editar', [DiscoController::class, 'EditarDisco']);
 
