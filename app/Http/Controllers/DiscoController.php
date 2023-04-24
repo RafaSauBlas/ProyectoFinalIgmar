@@ -160,7 +160,7 @@ class DiscoController extends Controller
 
              $disco->save();
 
-             return redirect()->route('discos.index')
+             return redirect('/home')
                     ->with('success', 'El disco se actualizó correctamente.');
           }
           else{
@@ -216,7 +216,7 @@ class DiscoController extends Controller
                 $disco = Disco::findOrFail($id);
                 $disco->delete();
 
-                return redirect()->route('discos.index')
+                return redirect('/home')
                        ->with('success', 'El disco se eliminó correctamente.');
             }
             else{
@@ -227,7 +227,7 @@ class DiscoController extends Controller
             $disco = Disco::findOrFail($id);
            $disco->delete();
 
-           return redirect()->route('discos.index')
+           return redirect('/home')
                   ->with('success', 'El disco se eliminó correctamente.');
          }
 

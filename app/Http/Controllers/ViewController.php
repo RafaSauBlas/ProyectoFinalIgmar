@@ -43,6 +43,9 @@ class ViewController extends Controller
 
     public function solicitudesView()
     {
+        if(Auth::user()->area === 1){
+            return back();
+        }
         if(Auth::user()->area == 2){
             $solicitudes = Peticiones::select(
                 'peticiones.id',
