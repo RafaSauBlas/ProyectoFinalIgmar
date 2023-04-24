@@ -24,23 +24,23 @@
                                         <label for="nombre">
                                             Nombre
                                         </label>
-                                        <input type="text" value="{{$disco->nombre}}" name="nombre" id="nombre">
+                                        <input type="text" value="{{$disco->nombre}}" name="nombre" id="nombre" required>
                                         <label for="categoria">
                                             Categoria
                                         </label>
-                                        <input type="text" value="{{$disco->categoria}}" name="categoria" id="categoria">
+                                        <input type="text" value="{{$disco->categoria}}" name="categoria" id="categoria" required>
                                         <label for="cantante">
                                             Cantante
                                         </label>
-                                        <input type="text" value="{{$disco->cantante}}" name="cantante" id="cantante">
+                                        <input type="text" value="{{$disco->cantante}}" name="cantante" id="cantante" required>
                                         <label for="precio">
                                             Precio
                                         </label>
-                                        <input type="text" value="{{$disco->precio}}" name="precio" id="precio">
+                                        <input type="text" value="{{$disco->precio}}" name="precio" id="precio" required>
                                         <label for="archivo">
                                             Archivo
                                         </label>
-                                        <input type="file" value="{{$disco->archivo}}" name="archivo" id="archivo">
+                                        <input type="file" value="{{$disco->archivo}}" name="image" id="image" required>
                                         <button type="submit" class="btn btn-primary">Agregar</button>
                                 </div>
                             </div>

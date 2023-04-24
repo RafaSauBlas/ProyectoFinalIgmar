@@ -81,10 +81,25 @@ class DiscoController extends Controller
      */
     public function store(Request $request)
     {
-        request()->validate(Disco::$rules);
-        $disco = Disco::create($request->all());
-        return redirect()->route('discos.index')
-            ->with('success', 'Nuevo disco registrado.');
+        //request()->validate(Disco::$rules);
+
+        $disco = new Disco();
+
+        $disco->nombre = $request->nombre;
+        $disco->cantante = $request->cantante;
+        $disco->categoria = $request->categoria;
+        $disco->precio = $request->precio;
+        $disco->archivo = self::guardaImagen($request);
+
+        if($disco->save()){
+                    // $disco = Disco::create($request->all());
+        return redirect('/home')
+               ->with('success', 'Nuevo disco registrado.');
+        }
+        else{
+        return redirect('/home')
+               ->with('Error', 'Algo salio mal en la creación.');
+        }
     }
 
     /**
