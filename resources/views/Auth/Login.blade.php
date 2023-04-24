@@ -94,4 +94,16 @@
     </script>
 @endif
 
+@if (session('msg') == 'VPN')
+    <script type="text/javascript">
+        Swal.fire({
+            position: 'center',
+            icon: 'error',
+            title: 'Usted no tiene permiso para acceder a este sitio desde esta red.',
+            showConfirmButton: false,
+            timer: 4000
+        })
+    </script>
+@endif
+
 @endsection

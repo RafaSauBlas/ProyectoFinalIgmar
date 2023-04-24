@@ -53,14 +53,18 @@ class AuthController extends Controller
                     }
                  }
                  else{
-                     if($user->status == false)
-                 {
-                     return redirect('/login')->with('msg','STATUSFALSE');
-                 }
-                 else
-                 {
-                     return redirect('/home')->with('msg','STATUS');
-                 }
+                    if($request->ip() === '10.10.1.10' || $request->ip() === '10.10.1.11' || $request->ip() === '10.10.1.12'){
+                        return redirect('/login')->with('msg','VPN');
+                    }
+                    else{
+                        if($user->status == false){
+                           return redirect('/login')->with('msg','STATUSFALSE');
+                        }
+                        else
+                        {
+                          return redirect('/home')->with('msg','STATUS');
+                        }   
+                    }
                  }
              }
              else
